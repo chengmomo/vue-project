@@ -89,6 +89,9 @@
     data() {
       return {}
     },
+    mounted () {
+      console.log(this.$route, 'SideMenu mounted $route.path')
+    },
     methods: {
       handleSelect(key, keyPath) {
         console.log(key, keyPath)

@@ -8,8 +8,9 @@
         </el-col>
         <el-col :span="16" class='menu-container'>
           <el-menu theme="dark" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b"
-                   class="el-menu-demo" mode="horizontal" :default-active="$store.state.headerCurRouter" unique-opened
-                   router>
+                   class="el-menu-demo" mode="horizontal" router unique-opened
+                   :default-active="$route.matched[0].path">
+            <!--:default-active="$store.state.headerCurRouter"-->
             <el-menu-item v-for='(item,index) in $router.options.routes' :index="item.path" :key='item.path'
                           v-if='!item.hidden' class="el-menu-item-demo" @click="menuClick(item.path)">
               <i :class="item.icon"></i>{{item.name}}{{item.path}}
@@ -107,10 +108,10 @@
       HelloWorld, SideMenu
     },
     created: function () {
-      // console.log(this.$router)
+      console.log(this.$router, 'created $router')
     },
     mounted () {
-      // console.log(this.$router)
+      console.log(this.$route, 'mounted $route')
     },
     methods: {
       handleSelect (key, keyPath) {
@@ -125,7 +126,8 @@
       handleselect: function (a, b) {
       },
       menuClick (item) {
-        alert(this.$route.path);
+        // alert(this.$route.path)
+        console.log(item, 'item')
         this.$store.commit('setHeaderCurRouter', item)
         // alert(this.$store.getters.getHeaderCurRouter)
       },
@@ -172,7 +174,7 @@
           type: 'warning'
         }).then(() => {
           // this.$store.dispatch('remove_userinfo').then(() => {
-          // this.$router.push('/login')
+          this.$router.push('/')
           // })
         })
       }

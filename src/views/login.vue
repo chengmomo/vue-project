@@ -19,57 +19,54 @@
 	</div>
 </template>
 <script>
-	export default {
-		data() {
-			return {
-				loginForm: {
-					username:'',
-					password:''
-				},
-				rules: {
-					username: [
-					{ required: true, message: '请输入用户名', trigger: 'blur' },
-					{ min: 5, max: 10, message: '长度在 5 到 10 个字符', trigger: 'blur' }
-					],
-					password:[
-					{ required: true, message: '请输入密码', trigger: 'blur' },
-					{ min: 6,  message: '密码长度至少六位', trigger: 'blur' }
-					// { validator: checkNumber, trigger: 'blur' }
-					],
-				}
-			}
-		},
-		methods: {
-			handleSubmit(formName){
-				this.$refs[formName].validate((valid) => {
-					if (valid) {
-						console.log(formName);
-						console.log(this.loginForm);
-						this.$router.push({ path: '/home/open/form' });
-					} else {
-						console.log('error submit!!');
-						return false;
-					}
-				});
-			},
-			handleReset(formName){
-				this.$refs[formName].resetFields();
-				// this.$router.push({ path: '/home' });
-			},
-		}
-	}
+  export default {
+    data() {
+      return {
+        loginForm: {
+          username: '',
+          password: ''
+        },
+        rules: {
+          username: [
+            {required: true, message: '请输入用户名', trigger: 'blur'},
+            {min: 5, max: 10, message: '长度在 5 到 10 个字符', trigger: 'blur'}
+          ],
+          password: [
+            {required: true, message: '请输入密码', trigger: 'blur'},
+            {min: 6, message: '密码长度至少六位', trigger: 'blur'}
+            // { validator: checkNumber, trigger: 'blur' }
+          ],
+        }
+      }
+    },
+    methods: {
+      handleSubmit(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            console.log(formName);
+            console.log(this.loginForm);
+            this.$router.push({path: '/home/open/form'});
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+      },
+      handleReset(formName) {
+        this.$refs[formName].resetFields();
+        // this.$router.push({ path: '/home' });
+      }
+    }
+  }
 </script>
 <style scoped>
 .login-bg{
 	background: url('../assets/imgs/login-bg.jpeg');
 	background-repeat: no-repeat;
 	background-size: cover;
-	/*justify-content: center;
-    align-items: center;*/
 	height:100%;
 }
 .login-container{
-	/*border: 1px solid #dddddd;*/
 	width: 360px;
 	height: 285px;
 	background: #f3f3f4;
@@ -80,7 +77,6 @@
 	position: absolute;
 	top:220px;
 	right:18%;
-	/*margin: 0 auto;*/
 }
 .login-title,.login-subtitle,.login-buttons{
 	text-align: center;
@@ -92,7 +88,6 @@
 	margin-bottom: 20px;
 }
 .loginForm{
-	/*border:1px solid red;*/
 	width: 90%;
 	margin:0 auto;
 }

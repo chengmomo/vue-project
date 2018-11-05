@@ -37,42 +37,46 @@ export default new Router({
       icon: 'el-icon-menu',
       redirect: '/home/open',
       children: [
-            { path: 'open', 
-              name: 'Element UI',
-              component: Content, 
-              icon:'el-icon-picture',
-              redirect: '/home/open/form',
-              children: [
-                    { path: 'form', component: Form, name: 'Form'},
-                    { path: 'table', component: Table, name: 'Table' },
-                    { path: 'collapse', component: Collapse, name: 'Collapse' },
-                    { path: 'others', component: Others, name: 'Others' },
-                ]
-            },
-            { path: 'open2', 
-              name: 'Vux UI',
-              component: Content, 
-              icon:'el-icon-message',
-              redirect: '/home/open2/form',
-              children: []
-            },
-            { path: 'open3', 
-              name: 'iView UI',
-              component: Content, 
-              icon:'el-icon-picture',
-              redirect: '/home/open3/form',
-              children: []
-            },
-            { path: 'open4', 
-              name: 'mint UI',
-              component: Content,
-              icon:'el-icon-picture', 
-              redirect: '/home/open4/form',
-              children: []
-            },
-           // { path: '/table', component: Table, name: 'Table' },
-           // { path: '/others', component: Others, name: 'Others' },
-        ]
+        {
+          path: 'open',
+          name: 'Element UI',
+          component: Content,
+          icon: 'el-icon-picture',
+          redirect: '/home/open/form',
+          children: [
+            {path: 'form', component: Form, name: 'Form'},
+            {path: 'table', component: Table, name: 'Table'},
+            {path: 'collapse', component: Collapse, name: 'Collapse'},
+            {path: 'others', component: Others, name: 'Others'},
+          ]
+        },
+        {
+          path: 'open2',
+          name: 'Vux UI',
+          component: Content,
+          icon: 'el-icon-message',
+          redirect: '/home/open2/form',
+          children: []
+        },
+        {
+          path: 'open3',
+          name: 'iView UI',
+          component: Content,
+          icon: 'el-icon-picture',
+          redirect: '/home/open3/form',
+          children: []
+        },
+        {
+          path: 'open4',
+          name: 'mint UI',
+          component: Content,
+          icon: 'el-icon-picture',
+          redirect: '/home/open4/form',
+          children: []
+        },
+        // { path: '/table', component: Table, name: 'Table' },
+        // { path: '/others', component: Others, name: 'Others' },
+      ]
     },
     {
       path: '/component',
@@ -81,33 +85,33 @@ export default new Router({
       icon: 'el-icon-goods',
       redirect: '/component/editor',
       children: [
-            { path: 'editor',     
-              name: 'Editor',
-              component: Content, 
-              redirect: '/component/editor/wangEditor',
-              children: [
-              { path: 'wangEditor', component: WangEditor, name: 'WangEditor'},
-              { path: 'quillEditor', component: QuillEditor, name: 'QuillEditor'},
-              { path: 'mavonEditor', component: MavonEditor, name: 'MavonEditor'},
-              { path: 'markdownEditor', component: MarkdownEditor, name: 'MarkdownEditor'},
-              // { path: 'table', component: Table, name: 'Table' },
-              // { path: 'others', component: Others, name: 'Others' },
-                 ]
-            },
-            { path: 'chart', 
-              name: 'Chart', 
-              component: Content,
-              redirect: '/component/chart/echarts',
-              children: [
-               { path: 'echarts', component: Echarts, name: 'Echarts'},
-               { path: 'IEcharts', component: IEcharts, name: 'IEcharts'},
-               { path: 'g2', component: G2, name: 'G2' },
-              ]
-            }
-        ]
+        {
+          path: 'editor',
+          name: 'Editor',
+          component: Content,
+          redirect: '/component/editor/wangEditor',
+          children: [
+            {path: 'wangEditor', component: WangEditor, name: 'WangEditor'},
+            {path: 'quillEditor', component: QuillEditor, name: 'QuillEditor'},
+            {path: 'mavonEditor', component: MavonEditor, name: 'MavonEditor'},
+            {path: 'markdownEditor', component: MarkdownEditor, name: 'MarkdownEditor'},
+            // { path: 'table', component: Table, name: 'Table' },
+            // { path: 'others', component: Others, name: 'Others' },
+          ]
+        },
+        {
+          path: 'chart',
+          name: 'Chart',
+          component: Content,
+          redirect: '/component/chart/echarts',
+          children: [
+            {path: 'echarts', component: Echarts, name: 'Echarts'},
+            {path: 'IEcharts', component: IEcharts, name: 'IEcharts'},
+            {path: 'g2', component: G2, name: 'G2'},
+          ]
+        }
+      ]
     },
-
-
     /*{
       path: '/',
       name: 'Hello',
@@ -205,6 +209,5 @@ export default new Router({
 }
       ]
     }*/
-
   ]
 })
