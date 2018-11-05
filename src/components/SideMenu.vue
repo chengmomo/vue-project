@@ -16,7 +16,7 @@
 								<el-menu-item v-for='(child,cindex) in item.children' :key='child.path' :index='$route.matched[0].path+"/"+item.path+"/"+child.path'>
 								<!-- :index='$route.matched[0].path+"/"+item.path+"/"+child.path' -->
 								<!-- :index='$store.state.headerCurRouter+"/"+item.path+"/"+child.path' -->
-									{{child.name}} 
+									{{child.name}}
 									<!-- {{$route.matched[0].path+'/'+item.path+'/'+child.path}} -->
 								</el-menu-item>
 							</el-submenu>
@@ -84,29 +84,27 @@
 </template>
 
 <script>
-	export default {
-		name: 'SideMenu',
-		data () {
-			return {
-
-			}
-		},
-		methods: {
-			handleSelect(key, keyPath) {
-				console.log(key, keyPath);
-			},
-			handleopen() {
-				console.log('handleopen');
-				console.log(this.$router.options.routes);
-				console.log(this.$route.matched);
-			},
-			handleclose() {
-				console.log('handleclose');
-			},
-			handleselect: function (a, b) {
-			},
-		}
-	}
+  export default {
+    name: 'SideMenu',
+    data() {
+      return {}
+    },
+    methods: {
+      handleSelect(key, keyPath) {
+        console.log(key, keyPath)
+      },
+      handleopen() {
+        console.log('handleopen')
+        console.log(this.$router.options.routes)
+        console.log(this.$route.matched)
+      },
+      handleclose() {
+        console.log('handleclose')
+      },
+      handleselect: function (a, b) {
+      },
+    }
+  }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -124,12 +122,9 @@
 .el-main-demo{
 	border: 2px solid red;
 	background-color: #fff;
-	height:100%; 
-	/*padding: 0px;*/
-	/*overflow: hidden;*/
+	height:100%;
 }
 .el-breadcrumb-container{
-	/*border: 1px solid red;*/
 	margin-bottom: 25px;
 }
 .el-breadcrumb-container .breadcrumb-title {
@@ -141,8 +136,6 @@
 	float: right;
 }
 .el-content-wrapper {
-	/*border: 1px solid red;*/
-	/*background-color: #fff;*/
 	box-sizing: border-box;
 }
 </style>
