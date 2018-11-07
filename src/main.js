@@ -4,6 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './vuex/store'
+import mytip from './directives/mytip'
+import dbClick from './directives/dbClick/index'
 import './assets/icon/iconfont.css' // 阿里图标
 // 引入echarts
 import echarts from 'echarts'
@@ -13,6 +15,8 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 // import '../static/css/theme-green/index.css';   // 浅绿色主题
 Vue.use(ElementUI)
+Vue.use(mytip)
+Vue.use(dbClick)
 Vue.prototype.$echarts = echarts
 
 // // 引入vue-quill-editor

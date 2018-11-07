@@ -48,13 +48,13 @@
                       v-model="dialog.user_info.password"></el-input>
           </el-form-item>
           <el-form-item class='edit-form' label="确认密码" prop='password_confirm'>
-            <el-input type='password' placeholder='确认密码' auto-complete='off'
+            <el-input v-mytip type='password' placeholder='确认密码' auto-complete='off'
                       v-model="dialog.user_info.password_confirm"></el-input>
           </el-form-item>
         </el-form>
         <span slot="footer" class="dialog-footer">
 	        		<el-button @click="dialog.show_pass = false">取 消</el-button>
-	        		<el-button type="primary" @click="updUserPass('user_info')">确 定</el-button>
+	        		<el-button v-dbClick type="primary" @click="updUserPass('user_info')">确 定</el-button>
 	        	</span>
       </el-dialog>
       <el-dialog size="small" :title="dialog.title" :visible.sync="dialog.show_set" v-model="dialog.show_set">
@@ -89,6 +89,8 @@
   // import Main from './main.vue'
   export default {
     name: 'Home',
+    directives: {
+    },
     data () {
       return {
         dialog: {
