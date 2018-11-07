@@ -11,7 +11,7 @@
 					<el-input type="password" placeholder="请输入密码" v-model="loginForm.password"></el-input>
 				</el-form-item>
 				<div class="login-buttons">
-				<el-button type="primary" @click="handleSubmit('loginForm')" class="login-button">登录</el-button>
+				<el-button type="primary" :loading="loading" @click="handleSubmit('loginForm')" class="login-button">登录</el-button>
 				<el-button @click.native.prevent="handleReset('loginForm')" class="login-button">重置</el-button>
 				</div>
 			</el-form>
@@ -35,25 +35,28 @@
             {required: true, message: '请输入密码', trigger: 'blur'},
             {min: 6, message: '密码长度至少六位', trigger: 'blur'}
             // { validator: checkNumber, trigger: 'blur' }
-          ],
-        }
+          ]
+        },
+        loading: false
       }
     },
     methods: {
       handleSubmit(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            console.log(formName);
-            console.log(this.loginForm);
-            this.$router.push({path: '/home/open/form'});
+            this.loading = true
+            console.log(formName)
+            console.log(this.loginForm)
+            this.$router.push({path: '/home/open/form'})
+            this.loading = false
           } else {
-            console.log('error submit!!');
-            return false;
+            console.log('error submit!!')
+            return false
           }
-        });
+        })
       },
       handleReset(formName) {
-        this.$refs[formName].resetFields();
+        this.$refs[formName].resetFields()
         // this.$router.push({ path: '/home' });
       }
     }

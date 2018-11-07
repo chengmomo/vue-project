@@ -87,6 +87,8 @@
   import HelloWorld from '../components/HelloWorld.vue'
   import SideMenu from '../components/SideMenu.vue'
   // import Main from './main.vue'
+  import * as api from './../api/api'
+
   export default {
     name: 'Home',
     directives: {
@@ -167,7 +169,13 @@
         }
       },
       updUserPass () {
+        api.requestLogin({
+          a: '2'
+        }).then(r => {
+          if (r.data && r.data.code === 0) {
 
+          }
+        })
       },
       logout () {
         this.$confirm('你确定退出登录么?', '确认退出', {
