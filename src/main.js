@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './vuex/store'
+import * as filters from './filters' // 全局vue filter
 import mytip from './directives/mytip'
 import dbClick from './directives/dbClick/index'
 import './assets/icon/iconfont.css' // 阿里图标
@@ -14,10 +15,6 @@ import ElementUI from 'element-ui'
 // 引入element-ui的默认CSS样式
 import 'element-ui/lib/theme-chalk/index.css'
 // import '../static/css/theme-green/index.css';   // 浅绿色主题
-Vue.use(ElementUI)
-Vue.use(mytip)
-Vue.use(dbClick)
-Vue.prototype.$echarts = echarts
 
 // // 引入vue-quill-editor
 // import VueQuillEditor from 'vue-quill-editor'
@@ -29,6 +26,16 @@ Vue.prototype.$echarts = echarts
 // import 'mavon-editor/dist/css/index.css'
 // Vue.use(VueQuillEditor)
 // Vue.use(mavonEditor)
+Vue.use(ElementUI)
+Vue.use(mytip)
+Vue.use(dbClick)
+
+// register global utility filters.
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+})
+
+Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
