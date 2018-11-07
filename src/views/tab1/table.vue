@@ -50,7 +50,7 @@
 </template>
 <script>
   // import {getUserListPage, removeUser, batchRemoveUser, editUser, addUser} from '../../api/api';
-  import SearchInput from '../component/searchInput'
+  import SearchInput from '../../components/searchInput'
 
   export default {
     name: 'Table',
