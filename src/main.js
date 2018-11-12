@@ -4,9 +4,10 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './vuex/store'
-import * as filters from './filters' // 全局vue filter
-import mytip from './directives/mytip'
-import dbClick from './directives/dbClick/index'
+import * as filters from './filters' // 全局filter
+import directive from '@/directives/directives'  // 全局自定义directives
+// import mytip from './directives/mytip' // 引入单个directive
+// import dbClick from './directives/dbClick/index' //引入单个directive
 import './assets/icon/iconfont.css' // 阿里图标
 // 引入echarts
 import echarts from 'echarts'
@@ -27,8 +28,8 @@ import 'element-ui/lib/theme-chalk/index.css'
 // Vue.use(VueQuillEditor)
 // Vue.use(mavonEditor)
 Vue.use(ElementUI)
-Vue.use(mytip)
-Vue.use(dbClick)
+// Vue.use(mytip)
+// Vue.use(dbClick)
 
 // register global utility filters.
 Object.keys(filters).forEach(key => {
@@ -37,6 +38,12 @@ Object.keys(filters).forEach(key => {
 
 Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false
+
+// Vue.directive('***',{
+//   inserted: function(el){
+//     //....
+//   }
+// })
 
 /* eslint-disable no-new */
 new Vue({

@@ -19,6 +19,6 @@ vueTips.install = (Vue, options = {}) => {
 
 export default vueTips
 
-// 全局使用指令main.js
+// 注册全局指令main.js
 // import vueTips from 'xxx';
 // Vue.use(vueTips)

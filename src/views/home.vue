@@ -48,7 +48,7 @@
                       v-model="dialog.user_info.password"></el-input>
           </el-form-item>
           <el-form-item class='edit-form' label="确认密码" prop='password_confirm'>
-            <el-input v-mytip type='password' placeholder='确认密码' auto-complete='off'
+            <el-input type='password' placeholder='确认密码' auto-complete='off'
                       v-model="dialog.user_info.password_confirm"></el-input>
           </el-form-item>
         </el-form>

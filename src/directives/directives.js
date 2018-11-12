@@ -1,4 +1,6 @@
-export default {
+import Vue from 'vue'
+
+Vue.directive('dbClick', {
   bind(el, binding) {
     // 做绑定的准备工作
     // 比如添加事件监听器，或是其他只需要执行一次的复杂操作
@@ -13,9 +15,17 @@ export default {
         }, 2000)
       }
     })
-  },
-  unbind: function(){
-    // 做清理操作
-    // 比如移除bind时绑定的事件监听器
   }
-}
+})
+
+// Vue.directive('***',{
+//   inserted: function(el){
+//     //....
+//   }
+// })
+
+export {Vue}
+
+// 1、建立保存所有指令的全局文件：directives/directives.js
+// 2、在main.js（入口JS文件）中引入，可以省略文件后缀
+// import directive from '@/directives/directives'
