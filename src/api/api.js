@@ -36,14 +36,14 @@ export default {}
 // import * as api from '@/api/api';
 // api.addUser
 
-// 全局引用：
-// 1、index.js将$api挂载到vue原型
-// 2、main.js引入index.js
+// 全局引用
+// 1、index.js：将$api挂载到vue原型
+// 2、main.js：引入index.js
 // import api from '@/api/index'
 // Vue.use(api)
-// 3、页面调用
+// 3、****.vue：页面调用api
 // this.$api.login(params).then(res => {
-//   /*请求成功后的操作*/
+//   // 请求成功后的操作
 // }).catch(err => {
-//   /*请求失败后的操作*/
+//   // 请求失败后的操作
 // })
