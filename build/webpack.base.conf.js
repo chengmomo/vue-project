@@ -36,6 +36,7 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      'jquery': resolve('static/js/jquery.js'),
     }
   },
   module: {
@@ -88,5 +89,8 @@ module.exports = {
     net: 'empty',
     tls: 'empty',
     child_process: 'empty'
-  }
+  },
+  // externals: {
+  //   'jquery': 'jQuery'
+  // }
 }

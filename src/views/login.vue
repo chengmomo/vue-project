@@ -19,6 +19,8 @@
 	</div>
 </template>
 <script>
+  import $ from 'jquery'
+
   export default {
     data() {
       return {
@@ -39,6 +41,9 @@
         },
         loading: false
       }
+    },
+    mounted () {
+      console.log($, 'mounted $route')
     },
     methods: {
       handleSubmit(formName) {

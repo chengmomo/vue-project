@@ -15,7 +15,7 @@ import '../static/iconfont/iconfont.css' // 阿里图标
 import './assets/css/index.scss' // global css
 
 import * as filters from './filters' // 全局filter
-import directive from '@/directives/directives'  // 全局自定义directives
+import '@/directives/directives'  // 全局自定义directives
 // import mytip from './directives/mytip' // 引入单个directive
 // import dbClick from './directives/dbClick/index' //引入单个directive
 // 引入echarts
