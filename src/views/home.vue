@@ -22,7 +22,7 @@
         </el-col>
         <el-col :span="4" class='user-container'>
           <img src="../assets/imgs/logo.png" class='logo' alt="">
-          <el-dropdown trigger="click" menu-align="start" @command='setDialogInfo' class="animated fadeIn">
+          <el-dropdown trigger="hover" menu-align="start" @command='setDialogInfo' class="animated fadeIn">
 						<span class="el-dropdown-link">
 							zhaichengjuan
               <i class="aep-icon icon-erweima"></i>
@@ -91,8 +91,7 @@
 
   export default {
     name: 'Home',
-    directives: {
-    },
+    directives: {},
     data () {
       return {
         dialog: {
@@ -191,49 +190,56 @@
     }
   }
 </script>
-<style scoped >
-.el-header-demo{
-	border:1px solid red;
-	/*padding-left: 220px;*/
-	/*padding-right: 0px; */
-	padding: 0;
-	background: #545c64;
-}
-.logo-container{
-	border:1px solid black;
-	height: 60px;
-	padding: 0 30px;
-}
-.logo{
-	/*border:1px solid red;*/
-	width: 40px;
-	height: 40px;
-	margin:10px auto;
-	float: left;
-}
-.logo-text{
-	color: white;
-	font-size: 22px;
-	line-height: 60px;
-	margin-left: 20px;
-}
-.menu-container{
-	/*border:1px solid red;*/
-}
-.el-menu-demo{
-	/*border:1px solid red;*/
-	/*background: #545c64;*/
-}
-.el-menu-item-demo{
-	font-size: 16px;
-}
-.user-container{
+<style scoped>
+  .el-header-demo {
+    /*border:1px solid red;*/
+    /*padding-left: 220px;*/
+    /*padding-right: 0px; */
+    padding: 0;
+    background: #545c64;
+  }
 
-}
-.el-dropdown-link{
-	color: white;
-	font-size: 18px;
-	line-height: 60px;
-	margin-left: 20px;
-}
+  .logo-container {
+    border: 1px solid black;
+    height: 60px;
+    padding: 0 30px;
+  }
+
+  .logo {
+    width: 40px;
+    height: 40px;
+    margin: 10px auto;
+    float: left;
+  }
+
+  .logo-text {
+    color: white;
+    font-size: 22px;
+    line-height: 60px;
+    margin-left: 20px;
+  }
+
+  .menu-container {
+    /*border:1px solid red;*/
+  }
+
+  .el-menu-demo {
+    /*border:1px solid red;*/
+    /*background: #545c64;*/
+  }
+
+  .el-menu-item-demo {
+    font-size: 16px;
+  }
+
+  .user-container {
+
+  }
+
+  .el-dropdown-link {
+    color: white;
+    font-size: 18px;
+    line-height: 60px;
+    margin-left: 20px;
+  }
 </style>
