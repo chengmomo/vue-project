@@ -16,7 +16,6 @@
             <el-col :span="24">
                 <a href="http://echarts.baidu.com/examples.html" target="_blank" style="float: right;">more>></a>
             </el-col>
-            </el-col>
         </el-row>
     </section>
 </template>

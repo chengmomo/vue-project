@@ -22,7 +22,7 @@
         </el-col>
         <el-col :span="4" class='user-container'>
           <img src="../assets/imgs/logo.png" class='logo' alt="">
-          <el-dropdown trigger="hover" menu-align="start" @command='setDialogInfo' class="animated fadeIn">
+          <el-dropdown trigger="click" menu-align="start" @command='setDialogInfo' class="animated fadeIn">
 						<span class="el-dropdown-link">
 							zhaichengjuan
               <i class="aep-icon icon-erweima"></i>

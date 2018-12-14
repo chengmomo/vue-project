@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 // import HelloWorld from '@/components/HelloWorld'
-import Main from '@/views/main'
+// import Main from '@/views/main'
 
 import Login from '@/views/login'
 import Home from '@/views/home'
@@ -9,6 +9,8 @@ import Content from '@/views/content'
 import Form from '@/views/element/form'
 import Table from '@/views/element/table'
 import Collapse from '@/views/element/collapse'
+import Tree from '@/views/element/tree'
+import Tab from '@/views/element/tab'
 import Others from '@/views/element/others'
 
 import WangEditor from '@/views/component/wangEditor'
@@ -27,8 +29,14 @@ export default new Router({
       path: '/',
       name: 'Login',
       // meta:{},
-      hidden: true,
+      hidden: true, // 是否显示在menu
       component: Login
+    },
+    {
+      path: '/test',
+      name: 'Test',
+      hidden: true,
+      component: Collapse
     },
     {
       path: '/home',
@@ -47,7 +55,9 @@ export default new Router({
             {path: 'form', component: Form, name: 'Form'},
             {path: 'table', component: Table, name: 'Table'},
             {path: 'collapse', component: Collapse, name: 'Collapse'},
-            {path: 'others', component: Others, name: 'Others'},
+            {path: 'tree', component: Tree, name: 'Tree'},
+            {path: 'tab', component: Tab, name: 'Tab'},
+            {path: 'tab/others', component: Others, name: 'Others', hidden: true}
           ]
         },
         {
@@ -73,7 +83,7 @@ export default new Router({
           icon: 'el-icon-picture',
           redirect: '/home/open4/form',
           children: []
-        },
+        }
         // { path: '/table', component: Table, name: 'Table' },
         // { path: '/others', component: Others, name: 'Others' },
       ]
