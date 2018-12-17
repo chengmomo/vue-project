@@ -42,19 +42,23 @@
         @size-change='handleSizeChange'>
       </el-pagination>
     </el-col>
-		<!-- <el-col :span="24" class="toolbar" style="width: 80%;">
-			<el-button type="danger" @click="batchRemove" :disabled="this.multipleSelection.length===0">批量删除</el-button>
-	      <el-pagination background layout="prev, pager, next" @current-change="handleCurrentChange" :total="total" style="float:right;"></el-pagination>
+    <!--<div v-if="tableData && tableData.length !== 0" style="text-align: center">-->
+      <!--<pagination :page="page" @size-change="handleSizeChange" @current-change="handleCurrentChange"></pagination>-->
+    <!--</div>-->
+    <!-- <el-col :span="24" class="toolbar" style="width: 80%;">
+            <el-button type="danger" @click="batchRemove" :disabled="this.multipleSelection.length===0">批量删除</el-button>
+          <el-pagination background layout="prev, pager, next" @current-change="handleCurrentChange" :total="total" style="float:right;"></el-pagination>
         </el-col> -->
     </section>
 </template>
 <script>
   // import {getUserListPage, removeUser, batchRemoveUser, editUser, addUser} from '../../api/api';
   import SearchInput from '../../components/searchInput'
+  import Pagination from '../../components/pagination'
 
   export default {
     name: 'Table',
-    components: {SearchInput},
+    components: {SearchInput, Pagination},
     data () {
       const item = {
         date: '2016-05-02',
@@ -65,11 +69,33 @@
         city: '南京市',
         zip: 210000
       }
+      const pageSizes = [{
+        value: 10,
+        label: '10页/条'
+      }, {
+        value: 20,
+        label: '20页/条'
+      }, {
+        value: 30,
+        label: '30页/条'
+      }, {
+        value: 40,
+        label: '40页/条'
+      }]
       return {
         multipleSelection: [],
         total: 0,
         tableData: Array(20).fill(item),
         searchValue: '@',
+        page: {
+          pageCurrent: 1,
+          pageSize: 10,
+          pageTotal: 0,
+          layout: 'total, sizes, pager,prev, next',
+          prevDisabled: false,
+          nextDisabled: false,
+          pageSizes
+        },
         // 需要给分页组件传的信息
         paginations: {
           current_page: 1,
@@ -78,27 +104,11 @@
           page_sizes: [3, 9, 12, 24],
           layout: 'total, sizes, prev, pager, next, jumper'
         }
-        // tableData: [{
-        //   date: '2016-05-02',
-        //   name: '小虎',
-        //   sex: 1,
-        //   address: '上海市普陀区金沙江路 1518 弄',
-        //   province: '江苏省',
-        //   city: '南京市',
-        //   zip: 210000
-        // }, {
-        //   date: '2016-05-04',
-        //   name: '王小虎',
-        //   sex: 0,
-        //   address: '上海市普陀区金沙江路 1517 弄',
-        //   province: '江苏省',
-        //   city: '南京市',
-        //   zip: 210003
-        // }],
       }
     },
-    mounted() {
+    created() {
       this.paginations.total = this.tableData.length
+      this.page.pageTotal = this.tableData.length
     },
     methods: {
       // 性别显示转换
@@ -140,15 +150,17 @@
       handleClick (row) {
 
       },
-      handleSizeChange (val) {
-        console.log(`每页 ${val} 条`)
+      handleSizeChange(val) {
+        console.log('handleSizeChange')
+        // this.page.pageSize = val
+        // this.getTableData(1)
       },
-      handleCurrentChange (val) {
-        console.log(`当前页: ${val}`)
+      handleCurrentChange(val, jumper = false) {
+        console.log('handleCurrentChange')
+        // this.getTableData(val)
       },
       getTableData (val) {
         console.log(val, 'getTableData')
-        console.log(this.searchValue, 'searchValue')
       }
     }
   }
