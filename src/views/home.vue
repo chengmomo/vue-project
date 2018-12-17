@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-container>
-      <el-header class="el-header-demo">
+      <el-header class="top-bar">
         <el-col :span="4" class='logo-container'>
           <img src="../assets/imgs/logo.png" class='logo' alt="">
           <span class='logo-text'>Vue</span>
@@ -35,7 +35,23 @@
           </el-dropdown>
         </el-col>
       </el-header>
-      <SideMenu></SideMenu>
+      <el-container class="container">
+          <el-col :span="4" class='side-container'>
+            <SideMenu></SideMenu>
+          </el-col>
+          <el-col :span="20">
+            <el-main class="main-container">
+              <el-col :span="24" class="main-header">
+                <main-header></main-header>
+              </el-col>
+              <el-col :span="24" class="main-content">
+                <transition name="fade" mode="out-in">
+                  <router-view></router-view>
+                </transition>
+              </el-col>
+            </el-main>
+          </el-col>
+      </el-container>
       <el-dialog size="small" :title="dialog.title" :visible.sync="dialog.show_pass" v-model="dialog.show_pass">
         <el-form style="margin:20px;width:80%;" label-width="100px" :model="dialog.user_info"
                  :rules="dialog.user_info_rules" ref='user_info'>
@@ -59,33 +75,13 @@
       </el-dialog>
       <el-dialog size="small" :title="dialog.title" :visible.sync="dialog.show_set" v-model="dialog.show_set">
       </el-dialog>
-      <!-- <el-container> -->
-      <!-- <el-header style="text-align: left; font-size: 12px" class="el-header-demo"> -->
-      <!-- 		<el-menu :default-active="$route.path" router class="el-menu-demo" mode="horizontal" @select="handleSelect">
-                      <el-menu-item index="/home/main">
-                          <i class="el-icon-location"></i>UI框架学习
-                      </el-menu-item>
-                      <el-submenu index="2">
-                          <template slot="title">
-                              <i class="el-icon-menu"></i>我的工作台
-                          </template>
-                          <el-menu-item index="2-1">选项1</el-menu-item>
-                          <el-menu-item index="2-2">选项2</el-menu-item>
-                          <el-menu-item index="2-3">选项3</el-menu-item>
-                      </el-submenu>
-                      <el-menu-item index="3"> <i class="el-icon-menu"></i><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
-                      <el-menu-item index="/home/main"> <i class="el-icon-menu"></i>订单管理</el-menu-item>
-                  </el-menu>
-                  <div class="line"></div> -->
-      <!-- </el-header> -->
-      <!-- <router-view></router-view> -->
-      <!-- </el-container> -->
     </el-container>
   </div>
 </template>
 <script>
   import HelloWorld from '../components/HelloWorld.vue'
-  import SideMenu from '../components/SideMenu.vue'
+  import SideMenu from '../components/layout/SideMenu.vue'
+  import MainHeader from '../components/layout/MainHeader';
   // import Main from './main.vue'
   import * as api from './../api/api'
 
@@ -108,6 +104,7 @@
       }
     },
     components: {
+      MainHeader,
       HelloWorld, SideMenu
     },
     created: function () {
@@ -190,11 +187,8 @@
     }
   }
 </script>
-<style scoped>
-  .el-header-demo {
-    /*border:1px solid red;*/
-    /*padding-left: 220px;*/
-    /*padding-right: 0px; */
+<style scoped lang="scss">
+  .top-bar {
     padding: 0;
     background: #545c64;
   }
@@ -219,21 +213,8 @@
     margin-left: 20px;
   }
 
-  .menu-container {
-    /*border:1px solid red;*/
-  }
-
-  .el-menu-demo {
-    /*border:1px solid red;*/
-    /*background: #545c64;*/
-  }
-
   .el-menu-item-demo {
     font-size: 16px;
-  }
-
-  .user-container {
-
   }
 
   .el-dropdown-link {
@@ -241,5 +222,20 @@
     font-size: 18px;
     line-height: 60px;
     margin-left: 20px;
+  }
+
+  .container{
+    min-height:750px;
+    .side-container {
+      background: #545c64;
+    }
+    .main-container {
+      border: 2px solid red;
+      background-color: #fff;
+      height: 100%;
+      .main-content {
+        box-sizing: border-box;
+      }
+    }
   }
 </style>

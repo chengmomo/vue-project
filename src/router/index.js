@@ -52,7 +52,7 @@ export default new Router({
           icon: 'el-icon-picture',
           redirect: '/home/open/form',
           children: [
-            {path: 'form', component: Form, name: 'Form'},
+            {path: 'form', component: Form, name: 'Form', meta: ['1', '2']},
             {path: 'table', component: Table, name: 'Table'},
             {path: 'collapse', component: Collapse, name: 'Collapse'},
             {path: 'tree', component: Tree, name: 'Tree'},
