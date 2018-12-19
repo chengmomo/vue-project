@@ -4,6 +4,7 @@ import Router from 'vue-router'
 // import Main from '@/views/main'
 
 import Login from '@/views/login'
+import Error from '@/views/error/Error'
 import Home from '@/views/home'
 import Content from '@/views/content'
 import Form from '@/views/element/form'
@@ -31,6 +32,11 @@ export default new Router({
       // meta:{},
       hidden: true, // 是否显示在menu
       component: Login
+    },
+    {
+      path: '*',
+      hidden: true,
+      component: Error
     },
     {
       path: '/test',

@@ -28,9 +28,11 @@ import echarts from 'echarts'
 // import 'quill/dist/quill.bubble.css'
 // import mavonEditor from 'mavon-editor'
 // import 'mavon-editor/dist/css/index.css'
-
 // Vue.use(VueQuillEditor)
 // Vue.use(mavonEditor)
+
+// ElementUI
+ElementUI.Pagination.props.layout.default = 'sizes, prev, pager, next, jumper'
 Vue.use(ElementUI)
 // Vue.use(mytip)
 // Vue.use(dbClick)
