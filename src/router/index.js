@@ -1,26 +1,30 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 // import HelloWorld from '@/components/HelloWorld'
 // import Main from '@/views/main'
+// import Login from '@/views/login'
+// import Error from '@/views/error/Error'
+// import Home from '@/views/home'
+// import Content from '@/views/content'
+// import Form from '@/views/element/form'
+// import Table from '@/views/element/table'
+// import Collapse from '@/views/element/collapse'
+// import Tree from '@/views/element/tree'
+// import Tab from '@/views/element/tab'
+// import Others from '@/views/element/others'
+//
+// import WangEditor from '@/views/component/wangEditor'
+// import QuillEditor from '@/views/component/quillEditor'
+// import MavonEditor from '@/views/component/mavonEditor'
+// import MarkdownEditor from '@/views/component/markdownEditor'
+// import Echarts from '@/views/component/echarts'
+// import IEcharts from '@/views/component/IEcharts'
+// import G2 from '@/views/component/g2'
 
-import Login from '@/views/login'
-import Error from '@/views/error/Error'
-import Home from '@/views/home'
-import Content from '@/views/content'
-import Form from '@/views/element/form'
-import Table from '@/views/element/table'
-import Collapse from '@/views/element/collapse'
-import Tree from '@/views/element/tree'
-import Tab from '@/views/element/tab'
-import Others from '@/views/element/others'
-
-import WangEditor from '@/views/component/wangEditor'
-import QuillEditor from '@/views/component/quillEditor'
-import MavonEditor from '@/views/component/mavonEditor'
-import MarkdownEditor from '@/views/component/markdownEditor'
-import Echarts from '@/views/component/echarts'
-import IEcharts from '@/views/component/IEcharts'
-import G2 from '@/views/component/g2'
+// 开发环境不适用懒加载
+// in development-env not use lazy-loading, because lazy-loading too many pages will cause webpack hot update too slow. so only in production use lazy-loading;
+const _import = require('./_import_' + process.env.NODE_ENV)
 
 Vue.use(Router)
 
@@ -31,45 +35,45 @@ export default new Router({
       name: 'Login',
       // meta:{},
       hidden: true, // 是否显示在menu
-      component: Login
+      component: _import('login')
     },
     {
       path: '*',
       hidden: true,
-      component: Error
+      component: _import('error/Error')
     },
     {
       path: '/test',
       name: 'Test',
       hidden: true,
-      component: Collapse
+      component: _import('element/collapse')
     },
     {
       path: '/home',
       name: 'UI框架学习',
-      component: Home,
+      component: _import('home'),
       icon: 'el-icon-menu',
       redirect: '/home/open',
       children: [
         {
           path: 'open',
           name: 'Element UI',
-          component: Content,
+          component: _import('content'),
           icon: 'el-icon-picture',
           redirect: '/home/open/form',
           children: [
-            {path: 'form', component: Form, name: 'Form', meta: ['1', '2']},
-            {path: 'table', component: Table, name: 'Table'},
-            {path: 'collapse', component: Collapse, name: 'Collapse'},
-            {path: 'tree', component: Tree, name: 'Tree'},
-            {path: 'tab', component: Tab, name: 'Tab'},
-            {path: 'tab/others', component: Others, name: 'Others', hidden: true}
+            {path: 'form', component: _import('element/form'), name: 'Form', meta: ['1', '2']},
+            {path: 'table', component: _import('element/table'), name: 'Table'},
+            {path: 'collapse', component: _import('element/collapse'), name: 'Collapse'},
+            {path: 'tree', component: _import('element/tree'), name: 'Tree'},
+            {path: 'tab', component: _import('element/tab'), name: 'Tab'},
+            {path: 'tab/others', component: _import('element/others'), name: 'Others', hidden: true}
           ]
         },
         {
           path: 'open2',
           name: 'Vux UI',
-          component: Content,
+          component: _import('content'),
           icon: 'el-icon-message',
           redirect: '/home/open2/form',
           children: []
@@ -77,7 +81,7 @@ export default new Router({
         {
           path: 'open3',
           name: 'iView UI',
-          component: Content,
+          component: _import('content'),
           icon: 'el-icon-picture',
           redirect: '/home/open3/form',
           children: []
@@ -85,7 +89,7 @@ export default new Router({
         {
           path: 'open4',
           name: 'mint UI',
-          component: Content,
+          component: _import('content'),
           icon: 'el-icon-picture',
           redirect: '/home/open4/form',
           children: []
@@ -97,20 +101,20 @@ export default new Router({
     {
       path: '/component',
       name: '组件',
-      component: Home,
+      component: _import('home'),
       icon: 'el-icon-goods',
       redirect: '/component/editor',
       children: [
         {
           path: 'editor',
           name: 'Editor',
-          component: Content,
+          component: _import('content'),
           redirect: '/component/editor/wangEditor',
           children: [
-            {path: 'wangEditor', component: WangEditor, name: 'WangEditor'},
-            {path: 'quillEditor', component: QuillEditor, name: 'QuillEditor'},
-            {path: 'mavonEditor', component: MavonEditor, name: 'MavonEditor'},
-            {path: 'markdownEditor', component: MarkdownEditor, name: 'MarkdownEditor'},
+            {path: 'wangEditor', component: _import('component/wangEditor'), name: 'WangEditor'},
+            {path: 'quillEditor', component: _import('component/quillEditor'), name: 'QuillEditor'},
+            {path: 'mavonEditor', component: _import('component/mavonEditor'), name: 'MavonEditor'},
+            {path: 'markdownEditor', component: _import('component/markdownEditor'), name: 'MarkdownEditor'},
             // { path: 'table', component: Table, name: 'Table' },
             // { path: 'others', component: Others, name: 'Others' },
           ]
@@ -118,12 +122,12 @@ export default new Router({
         {
           path: 'chart',
           name: 'Chart',
-          component: Content,
+          component: _import('content'),
           redirect: '/component/chart/echarts',
           children: [
-            {path: 'echarts', component: Echarts, name: 'Echarts'},
-            {path: 'IEcharts', component: IEcharts, name: 'IEcharts'},
-            {path: 'g2', component: G2, name: 'G2'},
+            {path: 'echarts', component: _import('component/echarts'), name: 'Echarts'},
+            {path: 'IEcharts', component: _import('component/IEcharts'), name: 'IEcharts'},
+            {path: 'g2', component: _import('component/g2'), name: 'G2'},
           ]
         }
       ]
