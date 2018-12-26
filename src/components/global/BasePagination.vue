@@ -34,7 +34,7 @@
 
 <script>
   export default {
-    name: 'pagination',
+    name: 'BasePagination',
     data() {
       return {}
     },

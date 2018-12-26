@@ -53,12 +53,12 @@
 </template>
 <script>
   // import {getUserListPage, removeUser, batchRemoveUser, editUser, addUser} from '../../api/api';
-  import SearchInput from '../../components/searchInput'
-  import Pagination from '../../components/pagination'
+  // import SearchInput from '../../components/global/SearchInput'
+  // import Pagination from '../../components/global/BasePagination'
 
   export default {
     name: 'Table',
-    components: {SearchInput, Pagination},
+    components: {},
     data () {
       const item = {
         date: '2016-05-02',

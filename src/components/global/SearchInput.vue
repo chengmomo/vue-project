@@ -8,7 +8,7 @@
 
 <script>
   export default {
-    name: 'searchInput',
+    name: 'SearchInput',
     data() {
       return {
         searchValue: this.value
