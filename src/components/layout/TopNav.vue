@@ -12,7 +12,8 @@
           <!--:default-active="$store.state.headerCurRouter"-->
           <el-menu-item v-for='(item,index) in $router.options.routes' :index="item.path" :key='item.path'
                         v-if='!item.hidden' class="el-menu-item-demo" @click="menuClick(item.path)">
-            <i :class="item.icon"></i>{{item.name}}{{item.path}}
+            <i :class="item.meta.icon" v-if="item.meta"></i>
+            {{item.name}}{{item.path}}
           </el-menu-item>
           <!-- <el-menu-item index="3" class="el-menu-item-demo" >
                           <i class="el-icon-location"></i>测试

@@ -8,7 +8,7 @@
         <template v-for="(item,index) in route.children">
           <el-submenu :index="item.path">
             <template slot="title">
-              <i :class="item.icon"></i>
+              <i :class="item.meta.icon" v-if="item.meta"></i>
               {{item.name}}
               <!-- {{item.path}} -->
             </template>

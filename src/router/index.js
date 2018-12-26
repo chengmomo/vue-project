@@ -13,7 +13,11 @@ Vue.use(Router)
 /**
  * hidden: true                   if `hidden:true` will not show in the sidebar(default is false)
  * name:'router-name'             the name is used by <keep-alive> (must set!!!)
- * meta
+ * meta : {
+    title: 'title'               the name show in submenu and breadcrumb (recommend set)
+    icon: 'svg-name'             the icon show in the sidebar,
+    paths: []                    ...
+  }
  **/
 
 const routes = [

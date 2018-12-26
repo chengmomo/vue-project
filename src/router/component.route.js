@@ -5,8 +5,8 @@ export default [
     path: '/component',
     name: '组件',
     component: _import('home'),
-    icon: 'el-icon-goods',
     redirect: '/component/editor',
+    meta: {icon: 'el-icon-goods'},
     children: [
       {
         path: 'editor',
