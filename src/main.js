@@ -58,6 +58,7 @@ requireComponent.keys().forEach(fileName => {
   // 全局注册组件
   Vue.component(
     componentName.replace(/\//, '-'),
+    // 如果这个组件选项是通过 `export default` 导出的，那么就会优先使用 `.default`，否则回退到使用模块的根。
     componentConfig.default || componentConfig
   )
 })

@@ -81,6 +81,12 @@
     mounted() {
     },
     methods: {
+      menuClick(item) {
+        // alert(this.$route.path)
+        console.log(item, 'item')
+        this.$store.commit('setHeaderCurRouter', item)
+        // alert(this.$store.getters.getHeaderCurRouter)
+      },
       /**
        * 弹出框-修改密码或者系统设置
        * @param {string} cmditem 弹框类型

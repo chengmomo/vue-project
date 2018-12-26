@@ -56,12 +56,6 @@
         // console.log('handleclose')
       },
       handleselect: function (a, b) {
-      },
-      menuClick (item) {
-        // alert(this.$route.path)
-        console.log(item, 'item')
-        this.$store.commit('setHeaderCurRouter', item)
-        // alert(this.$store.getters.getHeaderCurRouter)
       }
     }
   }
