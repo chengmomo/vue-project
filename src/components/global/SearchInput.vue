@@ -25,6 +25,9 @@
     watch: {
       'value': function () {
         this.searchValue = this.value
+      },
+      'searchValue': function () {
+        this.$emit('change', this.searchValue)
       }
     },
     methods: {
