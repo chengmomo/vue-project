@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import store from './vuex/store'
+import store from './store/index'
 
 // 引入element-ui
 import ElementUI from 'element-ui'

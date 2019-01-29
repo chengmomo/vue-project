@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <el-header class="top-bar">
+  <el-row class="top-bar__wrap">
+    <el-row>
       <el-col :span="4" class='logo-container'>
         <img src="@/assets/imgs/logo.png" class='logo' alt="">
         <span class='logo-text'>Vue</span>
@@ -34,7 +34,7 @@
           </el-dropdown-menu>
         </el-dropdown>
       </el-col>
-    </el-header>
+    </el-row>
     <el-dialog size="small" :title="dialog.title" :visible.sync="dialog.show_pass" v-model="dialog.show_pass">
       <el-form style="margin:20px;width:80%;" label-width="100px" :model="dialog.user_info"
                :rules="dialog.user_info_rules" ref='user_info'>
@@ -57,7 +57,7 @@
       </span>
     </el-dialog>
     <el-dialog size="small" :title="dialog.title" :visible.sync="dialog.show_set" v-model="dialog.show_set"></el-dialog>
-  </div>
+  </el-row>
 </template>
 <script>
   import * as api from '@/api/api'
@@ -92,7 +92,7 @@
        * 弹出框-修改密码或者系统设置
        * @param {string} cmditem 弹框类型
        */
-      setDialogInfo (cmditem) {
+      setDialogInfo(cmditem) {
         if (!cmditem) {
           console.log('test')
           this.$message('菜单选项缺少command属性')
@@ -121,7 +121,7 @@
             break
         }
       },
-      updUserPass () {
+      updUserPass() {
         api.requestLogin({
           a: '2'
         }).then(r => {
@@ -130,7 +130,7 @@
           }
         })
       },
-      logout () {
+      logout() {
         this.$confirm('你确定退出登录么?', '确认退出', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
@@ -147,13 +147,12 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-  .top-bar {
+  .top-bar__wrap {
     padding: 0;
     background: #545c64;
   }
 
   .logo-container {
-    height: 60px;
     padding: 0 30px;
   }
 
@@ -171,8 +170,12 @@
     margin-left: 20px;
   }
 
+  .el-menu-item {
+    box-sizing: content-box;
+  }
+
   .el-menu.el-menu--horizontal {
-    border-bottom: 0px;
+    border-bottom: 0;
   }
 
   .el-menu-item-demo {
