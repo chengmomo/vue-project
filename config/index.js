@@ -10,14 +10,14 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {}, // 需要 proxyTable 代理的接口（可跨域）
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
     port: 8082, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
-    autoOpenBrowser: false,
-    errorOverlay: true,
-    notifyOnErrors: true,
+    autoOpenBrowser: true, // 是否在编译（输入命令行npm run dev）后打开http://localhost:8080/页面
+    errorOverlay: true, // 浏览器错误提示
+    notifyOnErrors: true, // 跨平台错误提示
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
     // Use Eslint Loader?
@@ -45,23 +45,23 @@ module.exports = {
     // (https://github.com/webpack/css-loader#sourcemaps)
     // In our experience, they generally work as expected,
     // just be aware of this issue when enabling this option.
-    cssSourceMap: false,
+    cssSourceMap: false, // 是否开启 cssSourceMap默认为false
   },
 
   build: {
     // Template for index.html
     index: path.resolve(__dirname, '../dist/index.html'),
 
-    // Paths
-    assetsRoot: path.resolve(__dirname, '../dist'),
-    assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    // 打包Paths
+    assetsRoot: path.resolve(__dirname, '../dist'), // 编译输出的静态资源路径
+    assetsSubDirectory: 'static', // 编译输出的二级目录
+    assetsPublicPath: '/', // 编译发布的根目录，可配置为资源服务器域名或 CDN 域名
 
     /**
      * Source Maps
      */
 
-    productionSourceMap: false,
+    productionSourceMap: false, // 是否开启 cssSourceMap: 打包生成map文件
     // https://webpack.js.org/configuration/devtool/#production
     devtool: '#source-map',
 

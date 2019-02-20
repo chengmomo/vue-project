@@ -3,10 +3,10 @@ require('./check-versions')()
 
 process.env.NODE_ENV = 'production'
 
-const ora = require('ora')
-const rm = require('rimraf')
+const ora = require('ora')  // 一个很好看的 loading 插件
+const rm = require('rimraf') // 删除文件
 const path = require('path')
-const chalk = require('chalk')
+const chalk = require('chalk') // 对文案输出的一个彩色设置
 const webpack = require('webpack')
 const config = require('../config')
 const webpackConfig = require('./webpack.prod.conf')
@@ -16,6 +16,7 @@ spinner.start()
 
 rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
   if (err) throw err
+  //  开始 webpack 的编译
   webpack(webpackConfig, (err, stats) => {
     spinner.stop()
     if (err) throw err
