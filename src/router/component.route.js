@@ -1,5 +1,11 @@
 const _import = require('./_import_' + process.env.NODE_ENV)
 
+
+let componentElement = [
+  {name: 'WangEditor'},
+  {name: 'QuillEditor'},
+  {name: 'MarkdownEditor'}
+]
 export default [
   {
     path: '/component',
@@ -13,13 +19,27 @@ export default [
         name: 'Editor',
         component: _import('content'),
         redirect: '/component/editor/wangEditor',
+        meta: {icon: 'el-icon-menu'},
         children: [
-          {path: 'wangEditor', component: _import('component/wangEditor'), name: 'WangEditor'},
-          {path: 'quillEditor', component: _import('component/quillEditor'), name: 'QuillEditor'},
+          {
+            path: 'wangEditor',
+            component: _import('component/wangEditor'),
+            name: 'WangEditor',
+            meta: {menus: componentElement}
+          },
+          {
+            path: 'quillEditor',
+            component: _import('component/quillEditor'),
+            name: 'QuillEditor',
+            meta: {menus: componentElement}
+          },
+          {
+            path: 'markdownEditor',
+            component: _import('component/markdownEditor'),
+            name: 'MarkdownEditor',
+            meta: {menus: componentElement}
+          }
           // {path: 'mavonEditor', component: _import('component/mavonEditor'), name: 'MavonEditor'},
-          {path: 'markdownEditor', component: _import('component/markdownEditor'), name: 'MarkdownEditor'}
-          // { path: 'table', component: Table, name: 'Table' },
-          // { path: 'others', component: Others, name: 'Others' },
         ]
       },
       {
@@ -27,6 +47,7 @@ export default [
         name: 'Chart',
         component: _import('content'),
         redirect: '/component/chart/echarts',
+        meta: {icon: 'el-icon-goods'},
         children: [
           {path: 'echarts', component: _import('component/echarts'), name: 'Echarts'},
           {path: 'IEcharts', component: _import('component/IEcharts'), name: 'IEcharts'},

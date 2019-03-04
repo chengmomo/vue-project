@@ -43,16 +43,14 @@
       }
     },
     mounted () {
-      console.log($, 'mounted $route')
+      console.log($, 'mounted $')
     },
     methods: {
       handleSubmit(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
             this.loading = true
-            console.log(formName)
-            console.log(this.loginForm)
-            this.$router.push({path: '/home/open/form'})
+            this.$router.push({path: '/home/element/form'})
             this.loading = false
           } else {
             console.log('error submit!!')

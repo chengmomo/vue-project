@@ -1,40 +1,39 @@
 <template>
-  <el-row class="top-bar__wrap">
-    <el-row>
-      <el-col :span="4" class='logo-container'>
-        <img src="@/assets/imgs/logo.png" class='logo' alt="">
-        <span class='logo-text'>Vue</span>
-      </el-col>
-      <el-col :span="16" class='menu-container'>
-        <el-menu theme="dark" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b"
-                 class="el-menu-demo" mode="horizontal" router unique-opened
-                 :default-active="$route.matched[0].path">
-          <!--:default-active="$store.state.headerCurRouter"-->
-          <el-menu-item v-for='(item,index) in $router.options.routes' :index="item.path" :key='item.path'
-                        v-if='!item.hidden' class="el-menu-item-demo" @click="menuClick(item.path)">
-            <i :class="item.meta.icon" v-if="item.meta"></i>
-            {{item.name}}{{item.path}}
-          </el-menu-item>
-          <!-- <el-menu-item index="3" class="el-menu-item-demo" >
-                          <i class="el-icon-location"></i>测试
-                      </el-menu-item> -->
-        </el-menu>
-      </el-col>
-      <el-col :span="4" class='user-container'>
-        <img src="@/assets/imgs/logo.png" class='logo' alt="">
-        <el-dropdown trigger="click" menu-align="start" @command='setDialogInfo' class="animated fadeIn">
-          <span class="el-dropdown-link">
-            zhaichengjuan
-            <i class="aep-icon icon-erweima"></i>
-          </span>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item command='pass'>修改密码</el-dropdown-item>
-            <el-dropdown-item command='set'>系统设置</el-dropdown-item>
-            <el-dropdown-item command='logout' divided>退出</el-dropdown-item>
-          </el-dropdown-menu>
-        </el-dropdown>
-      </el-col>
-    </el-row>
+  <el-row class="top-bar__wrap" type="flex">
+    <div class="logo-container">
+      <img src="@/assets/imgs/logo.png" class='logo' alt="">
+      <span class='logo-text'>Vue</span>
+    </div>
+    <div class="right-container">
+      <el-row tyle="flex" style="min-width:1000px">
+        <el-col :span="18" class='menu-container'>
+          <el-menu theme="dark" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b"
+                   class="el-menu-demo" mode="horizontal" router unique-opened
+                   :default-active="$route.matched[0].path">
+            <el-menu-item v-for='(item,index) in $router.options.routes' :index="item.path" :key='item.path'
+                          v-if='!item.hidden' class="el-menu-item-demo" @click="menuClick(item.path)">
+              <i :class="item.meta.icon" v-if="item.meta"></i>
+              {{item.name}}{{item.path}}
+            </el-menu-item>
+          </el-menu>
+        </el-col>
+        <el-col :span="6" class='user-container'>
+          <img src="@/assets/imgs/logo.png" class='logo' alt="">
+          <el-dropdown trigger="click" menu-align="start" @command='setDialogInfo' class="animated fadeIn">
+            <span class="el-dropdown-link">
+              zhaichengjuan
+              <i class="aep-icon icon-erweima"></i>
+            </span>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item command='pass'>修改密码</el-dropdown-item>
+              <el-dropdown-item command='set'>系统设置</el-dropdown-item>
+              <el-dropdown-item command='logout' divided>退出</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </el-col>
+      </el-row>
+    </div>
+
     <el-dialog size="small" :title="dialog.title" :visible.sync="dialog.show_pass" v-model="dialog.show_pass">
       <el-form style="margin:20px;width:80%;" label-width="100px" :model="dialog.user_info"
                :rules="dialog.user_info_rules" ref='user_info'>
@@ -83,8 +82,6 @@
     },
     methods: {
       menuClick(item) {
-        // alert(this.$route.path)
-        console.log(item, 'item')
         this.$store.commit('setHeaderCurRouter', item)
         // alert(this.$store.getters.getHeaderCurRouter)
       },
@@ -145,7 +142,6 @@
   }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
   .top-bar__wrap {
     padding: 0;
@@ -153,7 +149,10 @@
   }
 
   .logo-container {
-    padding: 0 30px;
+    float: left;
+    padding-left: 10px;
+    width: 245px;
+    box-sizing: border-box;
   }
 
   .logo {
@@ -170,6 +169,13 @@
     margin-left: 20px;
   }
 
+  .right-container {
+    float: left;
+    width: -moz-calc(100% - 245px);
+    width: -webkit-calc(100% - 245px);
+    width: calc(100% - 245px);
+  }
+
   .el-menu-item {
     box-sizing: content-box;
   }
@@ -180,6 +186,7 @@
 
   .el-menu-item-demo {
     font-size: 16px;
+    width: 140px;
   }
 
   .user-container {

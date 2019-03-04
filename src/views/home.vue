@@ -2,21 +2,12 @@
   <div>
     <top-nav></top-nav>
     <el-container class="container">
-      <el-col :span="4" class='side-container'>
-        <side-menu></side-menu>
-      </el-col>
-      <el-col :span="20">
-        <el-main class="main-container">
-          <el-col :span="24" class="main-header">
-            <main-header></main-header>
-          </el-col>
-          <el-col :span="24" class="main-content">
-            <transition name="fade" mode="out-in">
-              <router-view></router-view>
-            </transition>
-          </el-col>
-        </el-main>
-      </el-col>
+      <side-menu v-if="refreshMenu" :isCollapse="isCollapse" @on-toggle="onToggle"></side-menu>
+      <el-row class="main-container" :style="{'margin-left': isCollapse?'65px':'200px'}">
+        <transition name="fade" mode="out-in">
+          <router-view></router-view>
+        </transition>
+      </el-row>
     </el-container>
   </div>
 </template>
@@ -29,8 +20,10 @@
   export default {
     name: 'Home',
     directives: {},
-    data () {
+    data() {
       return {
+        isCollapse: true,
+        refreshMenu: true
       }
     },
     components: {
@@ -39,37 +32,50 @@
       HelloWorld,
       SideMenu
     },
-    created: function () {
-      console.log(this.$router, 'created $router')
+    beforeRouteEnter(to, from, next) {
+      next(vm => {
+        console.log(to, 'beforeRouteEnter to')
+        vm.refreshMenu = false
+        vm.$nextTick(function () {
+          vm.refreshMenu = true
+        })
+      })
     },
-    mounted () {
-      console.log(this.$route, 'mounted $route')
+    mounted() {
+      // console.log(this.$route, 'mounted $route')
     },
     methods: {
-      handleSelect (key, keyPath) {
-        console.log(key, keyPath)
+      handleSelect(key, keyPath) {
+        // console.log(key, keyPath)
       },
-      handleopen () {
+      handleopen() {
         // console.log('handleopen')
       },
-      handleclose () {
+      handleclose() {
         // console.log('handleclose')
       },
       handleselect: function (a, b) {
+      },
+      onToggle(val) {
+        this.isCollapse = !this.isCollapse
       }
     }
   }
 </script>
 <style scoped lang="scss">
   .container {
-    min-height: 750px;
-    .side-container {
-      background: #545c64;
-    }
     .main-container {
-      background-color: #fff;
-      height: 100%;
+      padding: 0;
+      position: fixed;
+      top: 62px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      /*width: calc(100% - 265px);*/
+      overflow-y: scroll;
+      overflow-x: hidden;
       .main-content {
+        border: 1px solid red;
         box-sizing: border-box;
       }
     }
