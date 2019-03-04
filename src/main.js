@@ -30,6 +30,14 @@ import echarts from 'echarts'
 // Vue.use(VueQuillEditor)
 // Vue.use(mavonEditor)
 
+// 引入vue-clipboard
+import VueClipboards from 'vue-clipboard2'
+
+Vue.use(VueClipboards)
+// import VueCodemirror from 'vue-codemirror'
+// import 'codemirror/lib/codemirror.css' // css，必要
+// Vue.use(VueCodemirror)
+
 // 注册ElementUI
 ElementUI.Pagination.props.layout.default = 'sizes, prev, pager, next, jumper'
 Vue.use(ElementUI)
@@ -66,11 +74,12 @@ requireComponent.keys().forEach(fileName => {
 Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false
 
+// 创建实例化对象
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
+  // el: '#app', // 目的地: el: '#app' Or $mount(document.querySelector('#app'))
   router,
   store,
-  template: '<App/>',
-  components: { App }
-})
+  components: {App}, // 挂子
+  template: '<App/>' // 用子：如果template定义了内容则优先加载，否则加载#app的模板
+}).$mount(document.querySelector('#app'))
