@@ -76,6 +76,7 @@
 
   // import http from '../../api/product'
   // import $ from 'jquery'
+
   // import {codemirror} from 'vue-codemirror-lite'
   import {codemirror} from 'vue-codemirror'
   import 'codemirror/lib/codemirror.css' // css，必要
@@ -87,7 +88,7 @@
   import 'codemirror/mode/vue/vue.js'
   import 'codemirror/mode/javascript/javascript'
   import 'codemirror/addon/lint/lint'
-  import 'codemirror/addon/lint/json-lint'
+  // import 'codemirror/addon/lint/json-lint'
   // require('script-loader!jsonlint')
   // require hint addon for javacript
   // require('codemirror/addon/hint/show-hint.js')
@@ -126,7 +127,6 @@
           autoRefresh: true
         },
         code: 'const str = "hello world"',
-        a: '[{"accNum":0,"activeTime":"2019-02-07","newNum":0},{"accNum":0,"activeTime":"2019-02-08","newNum":0},{"accNum":0,"activeTime":"2019-02-09","newNum":0},{"accNum":0,"activeTime":"2019-02-10","newNum":0},{"accNum":0,"activeTime":"2019-02-11","newNum":0},{"accNum":0,"activeTime":"2019-02-12","newNum":0},{"accNum":0,"activeTime":"2019-02-13","newNum":0}]',
         // message: '这里是复制的内容\n' + '水水水水\n' + '2',
         message: '{\n' +
           '\t"properties": [{\n' +
@@ -289,7 +289,6 @@
     },
     methods: {
       getPost() {
-        console.log(1)
         this.codeMirrorInstance.focus()
         this.codeMirrorInstance.refresh()
       },

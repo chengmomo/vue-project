@@ -4,11 +4,11 @@
     <!--<div class='side-container' :style="{'width': '200px'}">-->
     <template v-for="(route,i) in $router.options.routes"
               v-if='!route.hidden && $route.matched.length && $route.matched[0].path===route.path'>
-      <el-menu :default-active="$route.path" router unique-opened @open="handleopen" @close="handleclose"
+      <el-menu :default-active="$route.matched[1].path" router unique-opened @open="handleopen" @close="handleclose"
                @select="handleSelect" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b"
                class='side-menu' :collapse="isCollapse" :collapse-transition="isTransition">
         <template v-for="(item,j) in route.children">
-          <el-menu-item :index='item.redirect' :key="j">
+          <el-menu-item :index='item.path' :key="j">
             <i :class="item.meta.icon" v-if="item.meta"></i>
             <span slot="title">{{item.name}}</span>
           </el-menu-item>

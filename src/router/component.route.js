@@ -1,10 +1,7 @@
 const _import = require('./_import_' + process.env.NODE_ENV)
 
-
 let componentElement = [
-  {name: 'WangEditor'},
-  {name: 'QuillEditor'},
-  {name: 'MarkdownEditor'}
+  {name: 'editor', children: [{name: 'WangEditor'}, {name: 'QuillEditor'}, {name: 'MarkdownEditor'}]}
 ]
 export default [
   {
@@ -15,35 +12,32 @@ export default [
     meta: {icon: 'el-icon-goods'},
     children: [
       {
-        path: 'editor',
+        path: '/component/editor',
         name: 'Editor',
         component: _import('content'),
         redirect: '/component/editor/wangEditor',
-        meta: {icon: 'el-icon-menu'},
+        meta: {icon: 'el-icon-menu', menus: componentElement},
         children: [
           {
             path: 'wangEditor',
             component: _import('component/wangEditor'),
-            name: 'WangEditor',
-            meta: {menus: componentElement}
+            name: 'WangEditor'
           },
           {
             path: 'quillEditor',
             component: _import('component/quillEditor'),
-            name: 'QuillEditor',
-            meta: {menus: componentElement}
+            name: 'QuillEditor'
           },
           {
             path: 'markdownEditor',
             component: _import('component/markdownEditor'),
-            name: 'MarkdownEditor',
-            meta: {menus: componentElement}
-          }
+            name: 'MarkdownEditor'
+          },
           // {path: 'mavonEditor', component: _import('component/mavonEditor'), name: 'MavonEditor'},
         ]
       },
       {
-        path: 'chart',
+        path: '/component/chart',
         name: 'Chart',
         component: _import('content'),
         redirect: '/component/chart/echarts',

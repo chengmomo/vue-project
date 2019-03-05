@@ -23,7 +23,7 @@
     },
     data() {
       return {
-        content: this.value
+        content: ''
       }
     },
     mounted() {
@@ -53,8 +53,7 @@
         }
       },
       changeData: function (value) {
-        this.value = value
-        console.log(value)
+        // this.content = value
       }
     }
   }
