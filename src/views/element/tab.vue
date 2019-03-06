@@ -13,7 +13,8 @@
             <el-button type="button"
                        v-clipboard:copy="message"
                        v-clipboard:success="onCopy"
-                       v-clipboard:error="onError">全部复制
+                       v-clipboard:error="onError">
+              全部复制
             </el-button>
           </el-col>
         </el-row>
@@ -26,11 +27,6 @@
           v-model="message">
         </el-input>
       </div>
-      <div class="wrapper" style="margin-top: 40px">
-        <p id="text">我把你当兄弟你却想着复制我？</p>
-        <textarea id="input">这是幕后黑手</textarea>
-        <input type="button" @click="copyUrl()" value="点击复制代码"/>
-      </div>
     </el-tab-pane>
     <el-tab-pane label="ace-editor" name="second">
       <el-row class="editor-title__wrap" type="flex" justify="space-between">
@@ -38,8 +34,7 @@
           完整物模型
         </el-col>
         <el-col :span="12" align="right">
-          <el-button type="button"
-                     v-clipboard:copy="message"
+          <el-button type="button" v-clipboard:copy="message"
                      v-clipboard:success="onCopy"
                      v-clipboard:error="onError">全部复制
           </el-button>
@@ -65,12 +60,10 @@
     </el-tab-pane>
     <el-tab-pane label="其他" name="fourth">
       <el-button @click="jumpTo">跳转至Tabs</el-button>
-      <wang-editor></wang-editor>
     </el-tab-pane>
   </el-tabs>
 </template>
 <script>
-  import WangEditor from '../component/wangEditor'
   import JsonEditor from '../../components/editor/jsonEditor'
   import AceEditor from '../../components/editor/aceEditor'
 
@@ -106,7 +99,7 @@
   import 'codemirror/addon/fold/comment-fold.js'
 
   export default {
-    components: {WangEditor, codemirror, JsonEditor, AceEditor},
+    components: {codemirror, JsonEditor, AceEditor},
     data() {
       return {
         activeName2: 'first',
@@ -303,64 +296,11 @@
       },
       onError(e) {
         alert('复制失败！')
-      },
-      // Firefox 48.0，Chrome 60.0，IE 8 都能用
-      copyUrl() {
-        // 若从后台请求数据量大时：放在textarea里chrome浏览器第一次复制会报错，第二次可以
-        // 将赋值放在请求数据之后，立即渲染组件，否则复制时可能没有全让好导致失败
-        let input = document.getElementById('input')
-        input.value = this.message
-        // 选择对象：select() 方法只对 <input> 和 <textarea> 有效，对于 <p> 就不好使
-        input.select()
-        try {
-          if (document.execCommand('copy', false, null)) {
-            // success info
-            document.execCommand('Copy') // 执行浏览器复制命令
-            alert('已复制好，可贴粘')
-          } else {
-            // fail info
-            alert('复制失败')
-          }
-        } catch (err) {
-          // fail info
-          alert('复制失败')
-        }
-      },
-      copyUrl2() {
-        let input = document.createElement('textarea')   // 直接构建input
-        input.value = this.message   // 设置内容
-        document.body.appendChild(input)        // 添加临时实例
-        input.select()     // 选择实例内容
-        if (document.execCommand('Copy')) {
-          document.execCommand('Copy')     // 执行复制
-          this.$message({
-            message: '复制成功',
-            type: 'success'
-          })
-        } else {
-          this.$message({
-            message: '复制失败，请重试',
-            type: 'error'
-          })
-        }
-        document.body.removeChild(input)  // 删除临时实例
       }
     }
   }
 </script>
 <style>
-  .wrapper {
-    position: relative;
-  }
-
-  #input {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    z-index: -10;
-  }
-
   .el-textarea.is-disabled .el-textarea__inner {
     cursor: auto;
     color: #333;

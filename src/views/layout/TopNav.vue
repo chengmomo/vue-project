@@ -191,7 +191,7 @@
 
   .user-container {
     .el-dropdown-link {
-      color: white;
+      color: #999999;
       font-size: 18px;
       line-height: 60px;
       margin-left: 20px;

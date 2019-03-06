@@ -4,7 +4,7 @@
     <!--<div class='side-container' :style="{'width': '200px'}">-->
     <template v-for="(route,i) in $router.options.routes"
               v-if='!route.hidden && $route.matched.length && $route.matched[0].path===route.path'>
-      <el-menu :default-active="$route.matched[1].path" router unique-opened @open="handleopen" @close="handleclose"
+      <el-menu :default-active="$route.matched[1].path" router unique-opened
                @select="handleSelect" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b"
                class='side-menu' :collapse="isCollapse" :collapse-transition="isTransition">
         <template v-for="(item,j) in route.children">
@@ -38,7 +38,6 @@
     props: ['isCollapse'],
     data() {
       return {
-        // isCollapse: false,
         isTransition: false
       }
     },
@@ -49,12 +48,6 @@
       handleSelect(index, indexPath) {
         // console.log(index, indexPath)
         // console.log(this.$route)
-      },
-      handleopen() {
-        console.log('handleopen')
-      },
-      handleclose() {
-        console.log('handleclose')
       },
       handleToggle() {
         this.$emit('on-toggle')
@@ -96,20 +89,9 @@
 
   .collapse {
     width: 100%;
-    background-color: transparent;
     border: 0;
-    color: white;
     font-size: 18px;
+    color: #999999;
+    background-color: #293038;
   }
-
-  .nav-bar {
-    background-color: #dcdcdc;
-    position: absolute;
-    color: #333;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 200px;
-  }
-
 </style>

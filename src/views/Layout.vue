@@ -1,8 +1,10 @@
 <template>
-  <div>
+  <div class="app-wrapper">
+    <!--头部导航-->
     <top-nav></top-nav>
     <el-container class="container">
-      <side-menu v-if="refreshMenu" :isCollapse="isCollapse" @on-toggle="onToggle"></side-menu>
+      <!--侧边导航-->
+      <side-menu class="side-container" v-if="refreshMenu" :isCollapse="isCollapse" @on-toggle="onToggle"></side-menu>
       <el-row class="main-container" :style="{'margin-left': isCollapse?'65px':'200px'}">
         <transition name="fade" mode="out-in">
           <router-view></router-view>
@@ -12,13 +14,12 @@
   </div>
 </template>
 <script>
-  import HelloWorld from '@/components/HelloWorld.vue'
-  import SideMenu from '@/components/layout/SideMenu.vue'
-  import MainHeader from '@/components/layout/MainHeader'
-  import TopNav from '@/components/layout/TopNav'
+  import SideMenu from './layout/SideMenu.vue'
+  import MainHeader from './layout/MainHeader'
+  import TopNav from './layout/TopNav'
 
   export default {
-    name: 'Home',
+    name: 'Layout',
     directives: {},
     data() {
       return {
@@ -29,7 +30,6 @@
     components: {
       TopNav,
       MainHeader,
-      HelloWorld,
       SideMenu
     },
     beforeRouteEnter(to, from, next) {

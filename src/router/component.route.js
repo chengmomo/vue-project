@@ -3,18 +3,25 @@ const _import = require('./_import_' + process.env.NODE_ENV)
 let componentElement = [
   {name: 'editor', children: [{name: 'WangEditor'}, {name: 'QuillEditor'}, {name: 'MarkdownEditor'}]}
 ]
+// UE编辑器
 export default [
   {
     path: '/component',
     name: '组件',
-    component: _import('home'),
-    redirect: '/component/editor',
+    component: _import('Layout'),
+    redirect: '/component/clipboard',
     meta: {icon: 'el-icon-goods'},
     children: [
       {
+        path: '/component/clipboard',
+        name: 'Clipboard',
+        component: _import('clipboard/index'),
+        meta: {icon: 'el-icon-printer'}
+      },
+      {
         path: '/component/editor',
         name: 'Editor',
-        component: _import('content'),
+        component: _import('Content'),
         redirect: '/component/editor/wangEditor',
         meta: {icon: 'el-icon-menu', menus: componentElement},
         children: [
@@ -39,7 +46,7 @@ export default [
       {
         path: '/component/chart',
         name: 'Chart',
-        component: _import('content'),
+        component: _import('Content'),
         redirect: '/component/chart/echarts',
         meta: {icon: 'el-icon-goods'},
         children: [

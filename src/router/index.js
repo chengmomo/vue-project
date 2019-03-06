@@ -26,7 +26,7 @@ const routes = [
     name: 'Login',
     // meta:{},
     hidden: true, // 是否显示在menu
-    component: _import('login')
+    component: _import('Login')
   },
   {
     path: '*',

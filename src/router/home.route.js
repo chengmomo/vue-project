@@ -11,14 +11,20 @@ export default [
   {
     path: '/home',
     name: 'UI框架学习',
-    component: _import('home'),
-    redirect: '/home/element',
+    component: _import('Layout'),
+    redirect: '/home/guide',
     meta: {icon: 'el-icon-menu'},
     children: [
       {
+        path: '/home/guide',
+        name: 'Guide',
+        component: _import('guide/index'),
+        meta: {icon: 'el-icon-info'}
+      },
+      {
         path: '/home/element',
         name: 'Element',
-        component: _import('content'),
+        component: _import('Content'),
         redirect: '/home/element/form',
         meta: {icon: 'el-icon-picture', menus: menuElement},
         children: [
@@ -58,7 +64,7 @@ export default [
       {
         path: '/home/other',
         name: 'Other',
-        component: _import('content'),
+        component: _import('Content'),
         redirect: '/home/other/tab',
         meta: {icon: 'el-icon-menu'},
         children: [{
@@ -70,7 +76,7 @@ export default [
       // {
       //   path: '/home/vux',
       //   name: 'Vux',
-      //   component: _import('content'),
+      //   component: _import('Content'),
       //   // redirect: '/home/Vux/form',
       //   meta: {icon: 'el-icon-picture'},
       //   children: []
@@ -78,7 +84,7 @@ export default [
       // {
       //   path: '/home/iView',
       //   name: 'iView',
-      //   component: _import('content'),
+      //   component: _import('Content'),
       //   // redirect: '/home/iView/form',
       //   meta: {icon: 'el-icon-picture'},
       //   children: []
@@ -86,7 +92,7 @@ export default [
       // {
       //   path: '/home/mint',
       //   name: 'mint',
-      //   component: _import('content'),
+      //   component: _import('Content'),
       //   // redirect: '/home/mint/form',
       //   meta: {icon: 'el-icon-message'},
       //   children: []
