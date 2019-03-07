@@ -21,7 +21,7 @@
   export default {
     name: 'Layout',
     directives: {},
-    data() {
+    data () {
       return {
         isCollapse: true,
         refreshMenu: true
@@ -32,7 +32,7 @@
       MainHeader,
       SideMenu
     },
-    beforeRouteEnter(to, from, next) {
+    beforeRouteEnter (to, from, next) {
       next(vm => {
         console.log(to, 'beforeRouteEnter to')
         vm.refreshMenu = false
@@ -41,22 +41,22 @@
         })
       })
     },
-    mounted() {
+    mounted () {
       // console.log(this.$route, 'mounted $route')
     },
     methods: {
-      handleSelect(key, keyPath) {
+      handleSelect (key, keyPath) {
         // console.log(key, keyPath)
       },
-      handleopen() {
+      handleopen () {
         // console.log('handleopen')
       },
-      handleclose() {
+      handleclose () {
         // console.log('handleclose')
       },
       handleselect: function (a, b) {
       },
-      onToggle(val) {
+      onToggle (val) {
         this.isCollapse = !this.isCollapse
       }
     }

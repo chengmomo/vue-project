@@ -65,12 +65,12 @@ export default [
         path: '/home/other',
         name: 'Other',
         component: _import('Content'),
-        redirect: '/home/other/tab',
+        redirect: '/home/other/EditorTab',
         meta: {icon: 'el-icon-menu'},
         children: [{
-          path: 'tab',
-          component: _import('element/tab'),
-          name: 'Tab-Editor'
+          path: 'EditorTab',
+          component: _import('element/EditorTab'),
+          name: 'EditorTab'
         }]
       },
       // {

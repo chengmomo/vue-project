@@ -15,14 +15,15 @@
   import 'codemirror/theme/blackboard.css'
 
   import 'codemirror/addon/lint/lint.css'
+  // require('script-loader!jsonlint')
   import 'codemirror/addon/lint/lint'
   // import 'codemirror/addon/lint/json-lint'
-  import 'codemirror/addon/display/autorefresh'
 
-  // require('script-loader!jsonlint')
   import 'codemirror/addon/fold/foldgutter.css'
   import 'codemirror/addon/fold/foldgutter.js'
   import 'codemirror/addon/fold/foldcode.js'
+  // 刷新
+  import 'codemirror/addon/display/autorefresh'
   // import 'codemirror/mode/python/python.js'
   // import 'codemirror/addon/fold/brace-fold.js'
   // import 'codemirror/addon/fold/xml-fold.js'
@@ -32,7 +33,7 @@
 
   export default {
     name: 'jsonEditor',
-    data() {
+    data () {
       return {
         jsonEditor: false
       }
@@ -42,14 +43,14 @@
       changeFn: Function
     },
     watch: {
-      value(value) {
+      value (value) {
         const editorValue = this.jsonEditor.getValue()
         if (value !== editorValue) {
           this.jsonEditor.setValue(JSON.stringify(JSON.parse(this.value), null, 2))
         }
       }
     },
-    mounted() {
+    mounted () {
       this.jsonEditor = CodeMirror.fromTextArea(this.$refs.textarea, {
         lineNumbers: true,
         mode: 'application/json',
@@ -75,10 +76,10 @@
       })
     },
     methods: {
-      getValue() {
+      getValue () {
         return this.jsonEditor.getValue()
       },
-      handleInput(e) {
+      handleInput (e) {
         if (this.changeFn) {
           this.changeFn(e.getValue())
         }
@@ -88,13 +89,6 @@
 </script>
 
 <style>
-
-  .CodeMirror {
-    padding: 0;
-    font-size: 13px;
-    height: 100%;
-  }
-
   .json-editor .cm-s-rubyblue span.cm-string {
     color: #F08047;
   }

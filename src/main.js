@@ -12,6 +12,12 @@ import 'element-ui/lib/theme-chalk/index.css' // element-ui的默认CSS样式
 import '../static/iconfont/iconfont.css' // 阿里图标
 import './assets/css/index.scss' // global css
 
+// 引入UEditor
+import '../static/js/UE/ueditor.config.js'
+import '../static/js/UE/ueditor.all.min.js'
+import '../static/js/UE/lang/zh-cn/zh-cn.js'
+import '../static/js/UE/ueditor.parse.min.js'
+
 import * as filters from './filters' // 全局filter
 import '@/directives/directives'  // 全局自定义directives
 // import mytip from './directives/mytip' // 引入单个directive
@@ -32,7 +38,6 @@ import echarts from 'echarts'
 
 // 引入vue-clipboard
 import VueClipboards from 'vue-clipboard2'
-
 Vue.use(VueClipboards)
 // import VueCodemirror from 'vue-codemirror'
 // import 'codemirror/lib/codemirror.css' // css，必要

@@ -47,8 +47,8 @@
       },
       // Firefox 48.0，Chrome 60.0，IE 8 都能用
       copyUrl() {
-        // 若从后台请求数据量大时：放在textarea里chrome浏览器第一次复制会报错，第二次可以
-        // 将赋值放在请求数据之后，立即渲染组件，否则复制时可能没有全让好导致失败
+        // 问题：若从后台请求数据量大时，放在textarea里chrome浏览器第一次复制会报错，第二次可以
+        // 解决方法：将赋值放在请求后台数据之后，立即渲染组件，否则复制时可能没有全好导致失败
         let input = document.getElementById('input')
         input.value = this.inputData
         // 选择对象：select() 方法只对 <input> 和 <textarea> 有效，对于 <p> 就不好使

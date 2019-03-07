@@ -42,7 +42,7 @@
       </el-row>
       <ace-editor :value="message" :readOnly="readOnly"></ace-editor>
     </el-tab-pane>
-    <el-tab-pane label="code-mirror" name="third">
+    <el-tab-pane label="json Editor(code-mirror)" name="third">
       <el-row class="editor-title__wrap" type="flex" justify="space-between">
         <el-col :span="12">
           完整物模型
@@ -100,7 +100,7 @@
 
   export default {
     components: {codemirror, JsonEditor, AceEditor},
-    data() {
+    data () {
       return {
         activeName2: 'first',
         readOnly: true,
@@ -250,12 +250,12 @@
       }
     },
     computed: {
-      codeMirrorInstance() {
+      codeMirrorInstance () {
         // get current editor object
         return this.$refs.myEditor.editor
       }
     },
-    mounted() {
+    mounted () {
       // this.codeMirrorInstance.focus()
       // this.code = this.message
       // this.codeMirrorInstance.setValue(this.message)
@@ -281,20 +281,20 @@
       // })
     },
     methods: {
-      getPost() {
+      getPost () {
         this.codeMirrorInstance.focus()
         this.codeMirrorInstance.refresh()
       },
-      handleClick(tab, event) {
+      handleClick (tab, event) {
         // console.log(tab, event)
       },
-      jumpTo() {
+      jumpTo () {
         this.$router.push({name: 'Tabs'})
       },
-      onCopy(e) {
+      onCopy (e) {
         alert('复制成功！')
       },
-      onError(e) {
+      onError (e) {
         alert('复制失败！')
       }
     }

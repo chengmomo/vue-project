@@ -30,13 +30,13 @@
   export default {
     name: 'SideNav',
     props: [],
-    data() {
+    data () {
       return {}
     },
-    mounted() {
+    mounted () {
     },
     methods: {
-      onClick(val) {
+      onClick (val) {
         this.$router.push({
           name: val
         })
@@ -52,5 +52,9 @@
     top: 62px;
     bottom: 0;
     width: 180px;
+  }
+
+  .el-submenu .el-menu-item {
+    min-width: 180px;
   }
 </style>

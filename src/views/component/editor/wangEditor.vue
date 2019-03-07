@@ -10,7 +10,7 @@
 
   export default {
     name: 'WangEditor',
-    data() {
+    data () {
       return {
         editorContent: ''
       }
@@ -20,7 +20,7 @@
         alert(this.editorContent)
       }
     },
-    mounted() {
+    mounted () {
       this.editorContent = ''
       var editor = new E('#editorElem')
       editor.customConfig.onchange = (html) => {

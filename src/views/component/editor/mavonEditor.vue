@@ -14,14 +14,14 @@
     components: {
       mavonEditor
     },
-    data() {
+    data () {
       return {
         content: '',
         toolbars: {}
       }
     },
     methods: {},
-    mounted() {
+    mounted () {
 
     },
     // computed: {

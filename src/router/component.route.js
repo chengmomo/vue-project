@@ -1,7 +1,11 @@
 const _import = require('./_import_' + process.env.NODE_ENV)
 
 let componentElement = [
-  {name: 'editor', children: [{name: 'WangEditor'}, {name: 'QuillEditor'}, {name: 'MarkdownEditor'}]}
+  {
+    name: 'Editor',
+    children: [{name: 'WangEditor'}, {name: 'QuillEditor'}, {name: 'MarkdownEditor'}, {name: 'UEditor'}]
+  },
+  {name: 'JsonEditor'}
 ]
 // UE编辑器
 export default [
@@ -27,20 +31,25 @@ export default [
         children: [
           {
             path: 'wangEditor',
-            component: _import('component/wangEditor'),
+            component: _import('component/editor/wangEditor'),
             name: 'WangEditor'
           },
           {
             path: 'quillEditor',
-            component: _import('component/quillEditor'),
+            component: _import('component/editor/quillEditor'),
             name: 'QuillEditor'
           },
           {
             path: 'markdownEditor',
-            component: _import('component/markdownEditor'),
+            component: _import('component/editor/markdownEditor'),
             name: 'MarkdownEditor'
           },
-          // {path: 'mavonEditor', component: _import('component/mavonEditor'), name: 'MavonEditor'},
+          {
+            path: 'UEditor',
+            component: _import('component/editor/UEditor'),
+            name: 'UEditor'
+          },
+          // {path: 'mavonEditor', component: _import('component/editor/mavonEditor'), name: 'MavonEditor'},
         ]
       },
       {

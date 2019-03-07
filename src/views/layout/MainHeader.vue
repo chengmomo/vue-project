@@ -1,5 +1,5 @@
 <template>
-  <el-header>
+  <el-header style="padding: 0">
     <strong class="breadcrumb-title">{{$route.name}}</strong>
     <el-breadcrumb separator="/" class="breadcrumb-inner">
       <!--方法一-->

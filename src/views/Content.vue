@@ -6,7 +6,8 @@
     <div class="content__inner" :style="{'left': refreshMenu?'180px':'0'}">
       <main-header></main-header>
       <transition name="fade">
-        <keep-alive>
+        <!-- keep-alive 缓存页面，可设置 include、exclude-->
+        <keep-alive exclude="WangEditor,QuillEditor">
           <router-view></router-view>
         </keep-alive>
       </transition>
@@ -20,13 +21,13 @@
   export default {
     name: 'Content',
     components: {MainHeader, SideNav},
-    data() {
+    data () {
       return {
         isCollapse: false,
         refreshMenu: true
       }
     },
-    beforeRouteEnter(to, from, next) {
+    beforeRouteEnter (to, from, next) {
       next(vm => {
         vm.refreshMenu = false
         vm.$nextTick(function () {
@@ -36,7 +37,7 @@
         })
       })
     },
-    mounted() {
+    mounted () {
     },
     methods: {}
   }
