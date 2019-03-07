@@ -64,8 +64,8 @@
   </el-tabs>
 </template>
 <script>
-  import JsonEditor from '../../components/editor/jsonEditor'
-  import AceEditor from '../../components/editor/aceEditor'
+  import JsonEditor from '@/components/editor/jsonEditor'
+  import AceEditor from '@/components/editor/aceEditor'
 
   // import http from '../../api/product'
   // import $ from 'jquery'

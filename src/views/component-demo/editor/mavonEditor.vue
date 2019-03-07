@@ -24,11 +24,11 @@
     mounted () {
 
     },
-    // computed: {
-    // 	editor() {
-    // 		return this.$refs.myMavonEditor.s_markdown;
-    // 	}
-    // }
+    computed: {
+      editor () {
+        return this.$refs.myMavonEditor.s_markdown
+      }
+    }
   }
 </script>
 

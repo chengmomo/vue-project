@@ -35,11 +35,11 @@
 </template>
 
 <script>
-	import barChart from '../../components/charts/barChart.vue';
-	import pieChart from '../../components/charts/pieChart.vue';
-	import lineChart from '../../components/charts/lineChart.vue';
-	import radarChart from '../../components/charts/radarChart.vue';
-	import funnelChart from '../../components/charts/funnelChart.vue';
+	import barChart from '../../../components/charts/barChart.vue';
+	import pieChart from '../../../components/charts/pieChart.vue';
+	import lineChart from '../../../components/charts/lineChart.vue';
+	import radarChart from '../../../components/charts/radarChart.vue';
+	import funnelChart from '../../../components/charts/funnelChart.vue';
 
 	export default {
 		name: 'IEcharts',

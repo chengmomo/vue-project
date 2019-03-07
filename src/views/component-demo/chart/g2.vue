@@ -11,7 +11,7 @@
 </template>
 
 <script>
-  import GLine from './../../components/g2/G2Line'
+  import GLine from '../../../components/g2/G2Line'
 
   export default {
     name: 'G2',

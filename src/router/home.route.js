@@ -65,13 +65,8 @@ export default [
         path: '/home/other',
         name: 'Other',
         component: _import('Content'),
-        redirect: '/home/other/EditorTab',
-        meta: {icon: 'el-icon-menu'},
-        children: [{
-          path: 'EditorTab',
-          component: _import('element/EditorTab'),
-          name: 'EditorTab'
-        }]
+        // redirect: '/home/other',
+        meta: {icon: 'el-icon-menu'}
       },
       // {
       //   path: '/home/vux',
