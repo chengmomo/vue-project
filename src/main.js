@@ -8,7 +8,7 @@ import store from './store/index'
 // 引入element-ui
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css' // element-ui的默认CSS样式
-// import '../static/css/theme-green/index.css';   // 浅绿色主题
+// import '../static/css/theme-green/index.css';   // 自定义主题-浅绿色
 import '../static/iconfont/iconfont.css' // 阿里图标
 import './assets/css/index.scss' // global css
 
@@ -18,6 +18,7 @@ import '../static/js/UE/ueditor.all.min.js'
 import '../static/js/UE/lang/zh-cn/zh-cn.js'
 import '../static/js/UE/ueditor.parse.min.js'
 
+import {global} from '@/global/global'
 import * as filters from './filters' // 全局filter
 import '@/directives/directives'  // 全局自定义directives
 // import mytip from './directives/mytip' // 引入单个directive
@@ -38,6 +39,7 @@ import echarts from 'echarts'
 
 // 引入vue-clipboard
 import VueClipboards from 'vue-clipboard2'
+
 Vue.use(VueClipboards)
 // import VueCodemirror from 'vue-codemirror'
 // import 'codemirror/lib/codemirror.css' // css，必要
@@ -75,6 +77,13 @@ requireComponent.keys().forEach(fileName => {
     componentConfig.default || componentConfig
   )
 })
+
+// 加载用户主题
+if (localStorage.getItem('themeValue')) {
+  global.changeTheme(localStorage.getItem('themeValue'))
+} else {
+  global.changeTheme('default')
+}
 
 Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false

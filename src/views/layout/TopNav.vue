@@ -7,29 +7,36 @@
     <div class="right-container">
       <el-row tyle="flex" style="min-width:1000px">
         <el-col :span="18" class='menu-container'>
-          <el-menu theme="dark" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b"
-                   class="el-menu-demo" mode="horizontal" router unique-opened
+          <el-menu class="top-menu" mode="horizontal" router unique-opened
+                   background-color="transparent" text-color="#fff" active-text-color="#545c64"
                    :default-active="$route.matched[0].path">
             <el-menu-item v-for='(item,index) in $router.options.routes' :index="item.path" :key='item.path'
                           v-if='!item.hidden' class="el-menu-item-demo" @click="menuClick(item.path)">
-              <i :class="item.meta.icon" v-if="item.meta"></i>
+              <!--<i :class="item.meta.icon" v-if="item.meta"></i>-->
               {{item.name}}{{item.path}}
             </el-menu-item>
           </el-menu>
         </el-col>
-        <el-col :span="6" class='user-container'>
-          <img src="@/assets/imgs/logo.png" class='logo' alt="">
-          <el-dropdown trigger="click" menu-align="start" @command='setDialogInfo' class="animated fadeIn">
-            <span class="el-dropdown-link">
-              zhaichengjuan
-              <i class="aep-icon icon-erweima"></i>
-            </span>
-            <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item command='pass'>修改密码</el-dropdown-item>
-              <el-dropdown-item command='set'>系统设置</el-dropdown-item>
-              <el-dropdown-item command='logout' divided>退出</el-dropdown-item>
-            </el-dropdown-menu>
-          </el-dropdown>
+        <el-col :span="6" class='user-container' justify="middle">
+          <div class="right-menu">
+            <el-tooltip effect="dark" content="主题" placement="bottom">
+              <skin-comp class="right-menu-item"></skin-comp>
+            </el-tooltip>
+            <div>
+              <img src="@/assets/imgs/logo.png" class='logo' alt="">
+              <el-dropdown trigger="click" menu-align="start" @command='setDialogInfo' class="animated fadeIn">
+                <span class="el-dropdown-link">
+                  zhaichengjuan
+                  <i class="aep-icon icon-erweima"></i>
+                </span>
+                <el-dropdown-menu slot="dropdown">
+                  <el-dropdown-item command='pass'>修改密码</el-dropdown-item>
+                  <el-dropdown-item command='set'>系统设置</el-dropdown-item>
+                  <el-dropdown-item command='logout' divided>退出</el-dropdown-item>
+                </el-dropdown-menu>
+              </el-dropdown>
+            </div>
+          </div>
         </el-col>
       </el-row>
     </div>
@@ -60,10 +67,13 @@
 </template>
 <script>
   import * as api from '@/api/api'
+  import SkinComp from '../../components/global/SkinComp'
+  import {global} from '@/global/global'
 
   export default {
     name: 'TopNav',
-    data() {
+    components: {SkinComp},
+    data () {
       return {
         dialog: {
           title: '',
@@ -78,10 +88,16 @@
         }
       }
     },
-    mounted() {
+    mounted () {
+      // 加载用户主题
+      if (localStorage.getItem('themeValue')) {
+        global.loadTopNav(localStorage.getItem('themeValue'))
+      } else {
+        global.loadTopNav('default')
+      }
     },
     methods: {
-      menuClick(item) {
+      menuClick (item) {
         this.$store.commit('setHeaderCurRouter', item)
         // alert(this.$store.getters.getHeaderCurRouter)
       },
@@ -89,7 +105,7 @@
        * 弹出框-修改密码或者系统设置
        * @param {string} cmditem 弹框类型
        */
-      setDialogInfo(cmditem) {
+      setDialogInfo (cmditem) {
         if (!cmditem) {
           console.log('test')
           this.$message('菜单选项缺少command属性')
@@ -118,7 +134,7 @@
             break
         }
       },
-      updUserPass() {
+      updUserPass () {
         api.requestLogin({
           a: '2'
         }).then(r => {
@@ -127,7 +143,7 @@
           }
         })
       },
-      logout() {
+      logout () {
         this.$confirm('你确定退出登录么?', '确认退出', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
@@ -145,7 +161,8 @@
 <style scoped lang="scss">
   .top-bar__wrap {
     padding: 0;
-    background: #545c64;
+    /*background: #21baa9;*/
+    /*box-shadow: 1px 2px 4px #999999;*/
   }
 
   .logo-container {
@@ -153,6 +170,7 @@
     padding-left: 10px;
     width: 245px;
     box-sizing: border-box;
+    /*border-right: .5px solid #666;*/
   }
 
   .logo {
@@ -163,10 +181,10 @@
   }
 
   .logo-text {
-    color: white;
     font-size: 22px;
     line-height: 60px;
     margin-left: 20px;
+    color: #fff;
   }
 
   .right-container {
@@ -190,8 +208,17 @@
   }
 
   .user-container {
+    height: 62px;
+    .right-menu {
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+    .right-menu-item {
+      margin-right: 20px;
+    }
     .el-dropdown-link {
-      color: #999999;
+      color: #fff;
       font-size: 18px;
       line-height: 60px;
       margin-left: 20px;

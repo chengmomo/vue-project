@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container">
+  <div class="page-container">
     <p class="warn-content">
       <a href="https://github.com/kamranahmedse/driver.js" target="_blank">driver.js.</a>
     </p>
@@ -38,6 +38,7 @@
     padding: 1rem;
     line-height: 1.6rem;
     word-spacing: .05rem;
+    margin-bottom: 10px;
     a {
       color: #42b983;
       font-weight: 600;

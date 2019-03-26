@@ -24,10 +24,10 @@ const steps = [
     }
   },
   {
-    element: '.collapse',
+    element: '.collapse-icon',
     popover: {
-      title: 'Collapse',
-      description: 'Open && Close sidebar',
+      title: 'collapse-icon',
+      description: 'Open && Close collapse',
       position: 'top'
     }
   }
