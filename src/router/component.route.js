@@ -58,6 +58,12 @@ export default [
           {path: 'IEcharts', component: _import('component-demo/chart/IEcharts'), name: 'IEcharts'},
           {path: 'g2', component: _import('component-demo/chart/g2'), name: 'G2'}
         ]
+      },
+      {
+        path: '/component/map',
+        name: 'Map',
+        component: _import('component-demo/map/index'),
+        meta: {icon: 'el-icon-menu'}
       }
     ]
   }

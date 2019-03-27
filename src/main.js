@@ -24,6 +24,8 @@ import '@/directives/directives'  // 全局自定义directives
 // import mytip from './directives/mytip' // 引入单个directive
 // import dbClick from './directives/dbClick/index' //引入单个directive
 
+// 引入百度地图
+import BaiduMap from 'vue-baidu-map'
 // 引入echarts
 import echarts from 'echarts'
 // // 引入vue-quill-editor
@@ -76,6 +78,11 @@ requireComponent.keys().forEach(fileName => {
     // 如果这个组件选项是通过 `export default` 导出的，那么就会优先使用 `.default`，否则回退到使用模块的根。
     componentConfig.default || componentConfig
   )
+})
+
+Vue.use(BaiduMap, {
+  // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
+  ak: 'YFS05bu24wzBZ4P3dCyGrBAIQVWYlEz1'
 })
 
 // 加载用户主题
