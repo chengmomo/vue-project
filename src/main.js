@@ -39,10 +39,9 @@ import echarts from 'echarts'
 // Vue.use(VueQuillEditor)
 // Vue.use(mavonEditor)
 
-// 引入vue-clipboard
 import VueClipboards from 'vue-clipboard2'
+import VueCountUp from 'vue-z-countup'
 
-Vue.use(VueClipboards)
 // import VueCodemirror from 'vue-codemirror'
 // import 'codemirror/lib/codemirror.css' // css，必要
 // Vue.use(VueCodemirror)
@@ -50,6 +49,8 @@ Vue.use(VueClipboards)
 // 注册ElementUI
 ElementUI.Pagination.props.layout.default = 'sizes, prev, pager, next, jumper'
 Vue.use(ElementUI)
+Vue.use(VueClipboards)
+Vue.use(VueCountUp)
 
 // 注册自定义指令
 // Vue.use(mytip)

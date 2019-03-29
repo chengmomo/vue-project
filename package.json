@@ -31,6 +31,7 @@
     "vue-quill-editor": "^3.0.4",
     "vue-router": "^3.0.1",
     "vue-simplemde": "^0.4.6",
+    "vue-z-countup": "^1.0.2",
     "vue2-ace-editor": "^0.0.13",
     "vuex": "^3.0.1",
     "wangeditor": "^3.1.1"
