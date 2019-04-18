@@ -3,10 +3,15 @@
     <el-row :gutter="25" style="padding: 6px">
       <el-col :span="span" v-for="(item,index) in data" :key="index">
         <div class="item" :style="{backgroundColor: item.bgColor}">
-          <p class="item-title">{{item.title}}</p>
-          <p class="item-num">
+          <div class="item-header">
+            <p class="item-title">{{item.title}}</p>
+            <span>实时</span>
+          </div>
+          <p class="item-body">
             <vue-count-up :start="item.start" :end="item.end"></vue-count-up>
           </p>
+          <p class="item-text">{{item.text}}</p>
+          <p class="item-tip">{{item.key}}</p>
         </div>
       </el-col>
     </el-row>
@@ -36,16 +41,47 @@
     .item {
       color: white;
       height: $height;
-      border-radius: 5px;
-      padding: 20px;
-      .item-title {
-        margin-bottom: 20px;
-        font-size: 16px;
+      border-radius: 4px;
+      padding: 12px 15px;
+      position: relative;
+      .item-header {
+        position: relative;
+        .item-title {
+          margin-bottom: 8px;
+          font-size: 15px;
+        }
+        & > span {
+          position: absolute;
+          top: 0;
+          right: 0;
+          background: rgba(255, 255, 255, 0.3);
+          padding: 2px 8px;
+          border-radius: 4px;
+          font-size: 12px;
+        }
       }
-      .item-num {
-        font-size: 24px;
-        text-indent: 32px;
+      .item-body {
+        font-size: 26px;
+        /*text-indent: 32px;*/
         font-weight: bold;
+        margin-bottom: 15px;
+      }
+      .item-text {
+        font-size: 12px;
+      }
+      .item-tip {
+        position: absolute;
+        top: 8px;
+        right: 15px;
+        width: 70px;
+        height: 70px;
+        text-align: center;
+        line-height: 70px;
+        font-size: 44px;
+        border-radius: 100%;
+        border: 2px solid #fff;
+        opacity: 0.1;
+        transform: rotate(-40deg);
       }
     }
   }

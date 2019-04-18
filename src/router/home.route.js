@@ -4,8 +4,7 @@ let menuElement = [
   {name: 'Form'},
   {name: 'Tree'},
   {name: 'Table'},
-  {name: 'Collapse'},
-  {name: 'Tabs'}
+  {name: 'Collapse'}
 ]
 export default [
   {
@@ -51,12 +50,6 @@ export default [
             component: _import('element/collapse'),
             name: 'Collapse',
             // meta: {menus: menuElement}
-          },
-          {
-            path: 'tabs',
-            component: _import('element/tabs'),
-            name: 'Tabs',
-            // meta: {menus: menuElement}
           }
           // {path: 'tab/others', component: _import('element/others'), name: 'Others', hidden: true}
         ]
@@ -65,9 +58,15 @@ export default [
         path: '/home/other',
         name: 'Other',
         component: _import('Content'),
-        // redirect: '/home/other',
-        meta: {icon: 'el-icon-menu'}
-      },
+        redirect: '/home/other/tabs',
+        meta: {icon: 'el-icon-menu'},
+        children: [{
+          path: 'tabs',
+          component: _import('element/tabs'),
+          name: 'Tabs'
+          // meta: {menus: menuElement}
+        }]
+      }
       // {
       //   path: '/home/vux',
       //   name: 'Vux',

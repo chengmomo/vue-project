@@ -23,13 +23,13 @@ export default [
     path: '/component',
     name: '组件',
     component: _import('Layout'),
-    redirect: '/component/clipboard',
+    redirect: '/component/dashboard',
     meta: {icon: 'el-icon-goods'},
     children: [
       {
-        path: '/component/clipboard',
-        name: 'Clipboard',
-        component: _import('component-demo/clipboard/index'),
+        path: '/component/dashboard',
+        name: 'Dashboard',
+        component: _import('component-demo/dashboard/index'),
         meta: {icon: 'el-icon-printer'}
       },
       {
@@ -64,6 +64,18 @@ export default [
         name: 'Map',
         component: _import('component-demo/map/index'),
         meta: {icon: 'el-icon-menu'}
+      },
+      {
+        path: '/component/clipboard',
+        name: 'Clipboard',
+        component: _import('component-demo/clipboard/index'),
+        meta: {icon: 'el-icon-printer'}
+      },
+      {
+        path: '/component/mixin',
+        name: 'Mixin',
+        component: _import('component-demo/mixin/index'),
+        meta: {icon: 'el-icon-goods'}
       }
     ]
   }
