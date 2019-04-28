@@ -1,32 +1,33 @@
 <template>
-	<div class="login-bg">
-		<div class="login-container">
-			<h3 class="login-title">欢迎登录xx后台管理系统</h3>
-			<p class="login-subtitle">( by vue + element ui )</p>
-			<el-form :model="loginForm" ref="loginForm" :rules="rules" label-width="75px" label-position="left" status-icon class="loginForm">
-				<el-form-item prop="username" label="用户名">
-					<el-input type="text" placeholder="请输入用户名" v-model="loginForm.username"></el-input>
-				</el-form-item>
-				<el-form-item prop="password" label="密码">
-					<el-input type="password" placeholder="请输入密码" v-model="loginForm.password"></el-input>
-				</el-form-item>
-				<div class="login-buttons">
-				<el-button type="primary" :loading="loading" @click="handleSubmit('loginForm')" class="login-button">登录</el-button>
-				<el-button @click.native.prevent="handleReset('loginForm')" class="login-button">重置</el-button>
-				</div>
-			</el-form>
-		</div>
-	</div>
+  <div :class="$style['login-bg']">
+    <div :class="$style['login-container']">
+      <h3 :class="$style['login-title']">欢迎登录xx后台管理系统</h3>
+      <p :class="$style['login-subTitle']">( by vue + element ui )</p>
+      <el-form :model="loginForm" ref="loginForm" :rules="rules" label-width="75px" label-position="left" status-icon
+               :class="$style.loginForm">
+        <el-form-item prop="username" label="用户名">
+          <el-input type="text" placeholder="请输入用户名" v-model="loginForm.username"></el-input>
+        </el-form-item>
+        <el-form-item prop="password" label="密码">
+          <el-input type="password" placeholder="请输入密码" v-model="loginForm.password"></el-input>
+        </el-form-item>
+        <div :class="$style['login-buttons']">
+          <el-button type="primary" :loading="loading" @click="handleSubmit('loginForm')">登录</el-button>
+          <el-button @click.native.prevent="handleReset('loginForm')" :class="$style['login-button']">重置</el-button>
+        </div>
+      </el-form>
+    </div>
+  </div>
 </template>
 <script>
   import $ from 'jquery'
 
   export default {
-    data() {
+    data () {
       return {
         loginForm: {
-          username: '',
-          password: ''
+          username: '22222',
+          password: '222222'
         },
         rules: {
           username: [
@@ -46,7 +47,7 @@
       console.log($, 'mounted $')
     },
     methods: {
-      handleSubmit(formName) {
+      handleSubmit (formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
             this.loading = true
@@ -58,48 +59,53 @@
           }
         })
       },
-      handleReset(formName) {
+      handleReset (formName) {
         this.$refs[formName].resetFields()
         // this.$router.push({ path: '/home' });
       }
     }
   }
 </script>
-<style scoped>
-.login-bg{
-	background: url('../assets/imgs/login-bg.jpeg');
-	background-repeat: no-repeat;
-	background-size: cover;
-	height:100%;
-}
-.login-container{
-	width: 360px;
-	height: 285px;
-	background: #f3f3f4;
-	box-shadow: 1px 1px 5px #cccccc;
-	opacity: 0.9;
-	padding: 20px 35px;
-	border-radius: 5px;
-	position: absolute;
-	top:220px;
-	right:18%;
-}
-.login-title,.login-subtitle,.login-buttons{
-	text-align: center;
-	font-size:20px;
-	margin: 16px 0px;
-}
-.login-subtitle{
-	font-size:14px;
-	margin-bottom: 20px;
-}
-.loginForm{
-	width: 90%;
-	margin:0 auto;
-}
-.login-button{
-	font-size: 14px;
-	width: 90px;
-	margin: 8px 10px;
-}
+<style module>
+  .login-bg {
+    background: url('../assets/imgs/login-bg.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+  }
+
+  .login-container {
+    width: 360px;
+    height: 285px;
+    background: #f3f3f4;
+    box-shadow: 1px 1px 5px #cccccc;
+    opacity: 0.9;
+    padding: 20px 35px;
+    border-radius: 5px;
+    position: absolute;
+    top: 220px;
+    right: 18%;
+  }
+
+  .login-title, .login-subTitle, .login-buttons {
+    text-align: center;
+    font-size: 20px;
+    margin: 16px 0px;
+  }
+
+  .login-subTitle {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  .loginForm {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .login-button {
+    font-size: 14px;
+    width: 90px;
+    margin: 8px 10px;
+  }
 </style>

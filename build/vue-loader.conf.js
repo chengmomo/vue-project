@@ -7,6 +7,11 @@ const sourceMapEnabled = isProduction
   : config.dev.cssSourceMap
 
 module.exports = {
+  // 配置CSS Modules
+  cssModules: {
+    localIdentName: '[path][name]---[local]---[hash:base64:5]',
+    camelCase: true
+  },
   loaders: utils.cssLoaders({
     sourceMap: sourceMapEnabled,
     extract: isProduction
