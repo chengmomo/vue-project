@@ -25,9 +25,11 @@ const createLintingRule = () => ({
 module.exports = {
   context: path.resolve(__dirname, '../'), // path.resolve([from ...], to) 将to参数解析为绝对路径
   // 配置webpack编译入口：路径相对于本文件所在的位置，可以写成字符串、数组、对象
-  entry: {
-    app: './src/main.js'
-  },
+  // entry: {
+  //   app: './src/main.js'
+  // },
+  // 安装babel-polyfill
+  entry: ['babel-polyfill', './src/main.js'],
   // 输出配置
   output: {
     path: config.build.assetsRoot, // webpack编译输出的静态资源根路径（例如：/dist）
