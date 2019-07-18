@@ -1,4 +1,5 @@
 const _import = require('./_import_' + process.env.NODE_ENV)
+const title = '组件'
 
 let componentEditor = [
   {
@@ -24,20 +25,20 @@ export default [
     name: '组件',
     component: _import('Layout'),
     redirect: '/component/dashboard',
-    meta: {icon: 'el-icon-goods'},
+    meta: {title, icon: 'el-icon-goods'},
     children: [
       {
         path: '/component/dashboard',
         name: 'Dashboard',
         component: _import('component-demo/dashboard/index'),
-        meta: {icon: 'el-icon-printer'}
+        meta: {title, icon: 'el-icon-printer'}
       },
       {
         path: '/component/editor',
         name: 'Editor',
         component: _import('Content'),
         redirect: '/component/editor/wangEditor',
-        meta: {icon: 'el-icon-menu', menus: componentEditor},
+        meta: {title, icon: 'el-icon-menu', menus: componentEditor},
         children: [
           {path: 'wangEditor', component: _import('component-demo/editor/wangEditor'), name: 'WangEditor'},
           {path: 'quillEditor', component: _import('component-demo/editor/quillEditor'), name: 'QuillEditor'},
@@ -52,7 +53,7 @@ export default [
         name: 'Chart',
         component: _import('Content'),
         redirect: '/component/chart/echarts',
-        meta: {icon: 'el-icon-goods', menus: componentChart},
+        meta: {title, icon: 'el-icon-goods', menus: componentChart},
         children: [
           {path: 'echarts', component: _import('component-demo/chart/echarts'), name: 'Echarts'},
           {path: 'IEcharts', component: _import('component-demo/chart/IEcharts'), name: 'IEcharts'},
@@ -63,19 +64,19 @@ export default [
         path: '/component/map',
         name: 'Map',
         component: _import('component-demo/map/index'),
-        meta: {icon: 'el-icon-menu'}
+        meta: {title, icon: 'el-icon-menu'}
       },
       {
         path: '/component/clipboard',
         name: 'Clipboard',
         component: _import('component-demo/clipboard/index'),
-        meta: {icon: 'el-icon-printer'}
+        meta: {title, icon: 'el-icon-printer'}
       },
       {
         path: '/component/mixin',
         name: 'Mixin',
         component: _import('component-demo/mixin/index'),
-        meta: {icon: 'el-icon-goods'}
+        meta: {title, icon: 'el-icon-goods'}
       }
     ]
   }

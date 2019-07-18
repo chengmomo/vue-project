@@ -96,6 +96,15 @@ if (localStorage.getItem('themeValue')) {
 Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false
 
+//动态修改title
+router.beforeEach((to, from, next) => {
+  console.log(to)
+  if (to.meta.title) {
+    document.title = to.meta.title || 'AEP'
+  }
+  next()
+})
+
 // 创建实例化对象
 /* eslint-disable no-new */
 new Vue({

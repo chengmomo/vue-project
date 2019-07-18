@@ -1,4 +1,5 @@
 const _import = require('./_import_' + process.env.NODE_ENV)
+const title = 'UI框架学习'
 
 let menuElement = [
   {name: 'Form'},
@@ -12,20 +13,20 @@ export default [
     name: 'UI框架学习',
     component: _import('Layout'),
     redirect: '/home/guide',
-    meta: {icon: 'el-icon-menu'},
+    meta: {title, icon: 'el-icon-menu'},
     children: [
       {
         path: '/home/guide',
         name: 'Guide',
         component: _import('guide/index'),
-        meta: {icon: 'el-icon-info'}
+        meta: {title, icon: 'el-icon-info'}
       },
       {
         path: '/home/element',
         name: 'Element',
         component: _import('Content'),
         redirect: '/home/element/form',
-        meta: {icon: 'el-icon-picture', menus: menuElement},
+        meta: {title, icon: 'el-icon-picture', menus: menuElement},
         children: [
           {
             path: 'form',
@@ -63,8 +64,8 @@ export default [
         children: [{
           path: 'tabs',
           component: _import('element/tabs'),
-          name: 'Tabs'
-          // meta: {menus: menuElement}
+          name: 'Tabs',
+          meta: {title}
         }]
       }
       // {
