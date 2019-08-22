@@ -18,7 +18,7 @@
     components: {
       GLine
     },
-    data() {
+    data () {
       return {
         serverData: []
       }

@@ -32,25 +32,25 @@ export default [
             path: 'form',
             component: _import('element/form'),
             name: 'Form',
-            // meta: {menus: menuElement}
+            meta: {title}
           },
           {
             path: 'tree',
             component: _import('element/tree'),
             name: 'Tree',
-            // meta: {menus: menuElement}
+            meta: {title}
           },
           {
             path: 'table',
             component: _import('element/table'),
             name: 'Table',
-            // meta: {menus: menuElement}
+            meta: {title}
           },
           {
             path: 'collapse',
             component: _import('element/collapse'),
             name: 'Collapse',
-            // meta: {menus: menuElement}
+            meta: {title}
           }
           // {path: 'tab/others', component: _import('element/others'), name: 'Others', hidden: true}
         ]

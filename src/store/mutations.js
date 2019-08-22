@@ -1,5 +1,5 @@
 export default {
-  setHeaderCurRouter(state, headerCurRouter) {
+  setHeaderCurRouter (state, headerCurRouter) {
     state.headerCurRouter = headerCurRouter
   }
 }

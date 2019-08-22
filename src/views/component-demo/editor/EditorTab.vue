@@ -1,8 +1,7 @@
 <template>
-  <el-tabs v-model="activeName2" type="border-card" @tab-click="handleClick">
+  <el-tabs v-model="activeName" type="border-card" @tab-click="handleClick">
     <el-tab-pane label="复制粘贴" name="first">
-      <span slot="label"><i class="el-icon-date"></i> 复制粘贴</span>
-      <div class="yeluosen">
+      <div>
         <!--<input type="text" v-model="message">-->
         <!--<textarea v-model="message">这是幕后黑手</textarea>-->
         <el-row class="editor-title__wrap" type="flex" justify="space-between">
@@ -10,7 +9,7 @@
             完整物模型
           </el-col>
           <el-col :span="12" align="right">
-            <el-button type="button"
+            <el-button type="text"
                        v-clipboard:copy="message"
                        v-clipboard:success="onCopy"
                        v-clipboard:error="onError">
@@ -34,7 +33,8 @@
           完整物模型
         </el-col>
         <el-col :span="12" align="right">
-          <el-button type="button" v-clipboard:copy="message"
+          <el-button type="text"
+                     v-clipboard:copy="message"
                      v-clipboard:success="onCopy"
                      v-clipboard:error="onError">全部复制
           </el-button>
@@ -48,7 +48,7 @@
           完整物模型
         </el-col>
         <el-col :span="12" align="right">
-          <el-button type="button"
+          <el-button type="text"
                      v-clipboard:copy="message"
                      v-clipboard:success="onCopy"
                      v-clipboard:error="onError">全部复制
@@ -59,7 +59,7 @@
       <!--<codemirror ref="myEditor" v-model="message" :options="options"></codemirror>-->
     </el-tab-pane>
     <el-tab-pane label="其他" name="fourth">
-      <el-button @click="jumpTo">跳转至Tabs</el-button>
+      <el-button type="text" @click="jumpTo">跳转至Tabs</el-button>
     </el-tab-pane>
   </el-tabs>
 </template>
@@ -73,20 +73,12 @@
   // import {codemirror} from 'vue-codemirror-lite'
   import {codemirror} from 'vue-codemirror'
   import 'codemirror/lib/codemirror.css' // css，必要
-  // 导入选中的theme文件
   import 'codemirror/theme/blackboard.css'
   import 'codemirror/theme/eclipse.css'
   import 'codemirror/theme/rubyblue.css'
-  // require htmlmixed mode
   import 'codemirror/mode/vue/vue.js'
   import 'codemirror/mode/javascript/javascript'
   import 'codemirror/addon/lint/lint'
-  // import 'codemirror/addon/lint/json-lint'
-  // require('script-loader!jsonlint')
-  // require hint addon for javacript
-  // require('codemirror/addon/hint/show-hint.js')
-  // require('codemirror/addon/hint/show-hint.css')
-  // require('codemirror/addon/hint/javascript-hint.js')
   import 'codemirror/addon/display/autorefresh'
 
   import 'codemirror/addon/fold/foldgutter.js'
@@ -102,7 +94,7 @@
     components: {codemirror, JsonEditor, AceEditor},
     data () {
       return {
-        activeName2: 'first',
+        activeName: 'first',
         readOnly: true,
         options: {
           tabSize: 2,
@@ -250,10 +242,10 @@
       }
     },
     computed: {
-      codeMirrorInstance () {
-        // get current editor object
-        return this.$refs.myEditor.editor
-      }
+      // codeMirrorInstance () {
+      //   // get current editor object
+      //   return this.$refs.myEditor.editor
+      // }
     },
     mounted () {
       // this.codeMirrorInstance.focus()
@@ -281,10 +273,10 @@
       // })
     },
     methods: {
-      getPost () {
-        this.codeMirrorInstance.focus()
-        this.codeMirrorInstance.refresh()
-      },
+      // getPost () {
+      //   this.codeMirrorInstance.focus()
+      //   this.codeMirrorInstance.refresh()
+      // },
       handleClick (tab, event) {
         // console.log(tab, event)
       },
@@ -300,7 +292,7 @@
     }
   }
 </script>
-<style>
+<style lang="scss" scoped>
   .el-textarea.is-disabled .el-textarea__inner {
     cursor: auto;
     color: #333;

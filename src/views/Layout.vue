@@ -73,7 +73,7 @@
       bottom: 0;
       /*width: calc(100% - 265px);*/
       overflow-y: scroll;
-      overflow-x: hidden;
+      /*overflow-x: hidden;*/
       .main-content {
         border: 1px solid red;
         box-sizing: border-box;

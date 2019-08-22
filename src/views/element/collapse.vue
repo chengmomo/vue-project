@@ -1,9 +1,9 @@
 <template>
-	<section>
-		<el-collapse v-model="collapse.activeNames" :accordion="collapse.accordion" @change="handleChange">
-			<el-collapse-item name="1" v-for="(item, index) in collapse.data" :key="index" :name="index">
-				<template slot="title">
-					<div class="collapse-header">
+  <section>
+    <el-collapse v-model="collapse.activeNames" :accordion="collapse.accordion" @change="handleChange">
+      <el-collapse-item v-for="(item, index) in collapse.data" :key="index" :name="index">
+        <template slot="title">
+          <div class="collapse-header">
             <el-row type="flex" justify="space-between">
               <el-col :span="10" class="title-style">
                 <span>{{item.name}}</span>
@@ -16,8 +16,8 @@
               </el-col>
             </el-row>
           </div>
-				</template>
-				<div class="collapse-content" v-for="(contentItem, contentIndex) in item.list">
+        </template>
+        <div class="collapse-content" v-for="(contentItem, contentIndex) in item.list">
           <el-row type="flex" justify="space-between" class="content-item">
             <el-col :span="10" class="content-title">
               <span>{{contentItem.name}}</span>
@@ -61,15 +61,15 @@
             </el-row>
           </template>
         </div>
-			</el-collapse-item>
-		</el-collapse>
-	</section>
+      </el-collapse-item>
+    </el-collapse>
+  </section>
 </template>
 
 <script>
   export default {
     name: 'Collapse',
-    data() {
+    data () {
       return {
         collapse: {
           accordion: false,
@@ -79,7 +79,7 @@
       }
     },
     // 初始化属性值
-    created() {
+    created () {
       this.collapse.data = [
         {
           name: 'sadhgvw',
@@ -110,11 +110,11 @@
       ]
     },
     // 调用接口请求
-    mounted() {
+    mounted () {
 
     },
     methods: {
-      handleChange(activeNames) {
+      handleChange (activeNames) {
         // console.log(activeNames, 'activeNames')
       }
     }
@@ -151,7 +151,7 @@
       white-space: nowrap;
       text-overflow: ellipsis;
     }
-    .content-item{
+    .content-item {
       align-items: center;
       .content-title {
         padding: 0 15px;

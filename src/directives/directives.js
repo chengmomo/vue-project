@@ -1,7 +1,7 @@
 import Vue from 'vue'
 
 Vue.directive('dbClick', {
-  bind(el, binding) {
+  bind (el, binding) {
     // 做绑定的准备工作
     // 比如添加事件监听器，或是其他只需要执行一次的复杂操作
     el.addEventListener('click', e => {

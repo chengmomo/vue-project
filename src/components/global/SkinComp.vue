@@ -3,7 +3,8 @@
     <el-dropdown @command="handleCommandSkin" trigger="hover" class="eldropdown">
       <span class="el-dropdown-link lang">主题</span>
       <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item v-for="(item,index) in skins" :key="index" :command="item.name">
+        <el-dropdown-item v-for="(item,index) in skins" :key="index" :command="item.name"
+                          :disabled="skinName===item.name">
           {{item.label}}
         </el-dropdown-item>
       </el-dropdown-menu>
@@ -22,13 +23,16 @@
           {name: 'Green', label: 'Green'},
           {name: 'Purple', label: 'Purple'},
           {name: 'Default', label: 'Default'}
-        ]
+        ],
+        skinName: 'Default'
       }
     },
     mounted () {
+      this.skinName = localStorage.getItem('themeValue')
     },
     methods: {
       handleCommandSkin (command) {
+        this.skinName = command
         global.changeTheme(command)
       }
     }

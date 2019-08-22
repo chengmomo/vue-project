@@ -17,14 +17,13 @@
 <script>
   export default {
     name: 'MainHeader',
-    data() {
+    data () {
       return {}
     },
-    mounted() {
+    mounted () {
       console.log(this.$route, 'MainHeader mounted $route.path')
     },
-    methods: {
-    }
+    methods: {}
   }
 </script>
 <style scoped>

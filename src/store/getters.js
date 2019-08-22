@@ -1,5 +1,5 @@
 export default {
-  getHeaderCurRouter(state) {
+  getHeaderCurRouter (state) {
     return state.headerCurRouter
   }
 }

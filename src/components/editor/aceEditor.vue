@@ -21,17 +21,17 @@
       value: String,
       readOnly: Boolean
     },
-    data() {
+    data () {
       return {
         content: ''
       }
     },
-    mounted() {
+    mounted () {
       this.content = JSON.stringify(JSON.parse(this.value), null, 2)
       // let editor = this.$refs.myEditor.editor
     },
     methods: {
-      editorInit(editor) {
+      editorInit (editor) {
         // require('brace/ext/language_tools') // language extension prerequsite...
         // require('brace/mode/html')
         // require('brace/mode/javascript')    // language
@@ -59,7 +59,7 @@
   }
 </script>
 
-<style>
+<style lang="scss">
   .ace-tomorrow .ace_constant.ace_character,
   .ace-tomorrow .ace_constant.ace_language,
   .ace-tomorrow .ace_constant.ace_numeric,
@@ -83,8 +83,5 @@
   #editor .ace-tomorrow .ace_string {
     /*color: #718C00;*/
     color: #C82829
-  }
-
-  #editor {
   }
 </style>

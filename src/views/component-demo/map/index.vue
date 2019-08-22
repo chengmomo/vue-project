@@ -7,9 +7,9 @@
     </p>
     <!--<baidu-map class="bm-view" center="南京" mapType="BMAP_HYBRID_MAP"></baidu-map>-->
     <el-card>
-      <input v-model.number="center.lng">
-      <input v-model.number="center.lat">
-      <input v-model.number="zoom">
+      <el-input v-model.number="center.lng"></el-input>
+      <el-input v-model.number="center.lat"></el-input>
+      <el-input v-model.number="zoom"></el-input>
     </el-card>
     <baidu-map class="bm-view" :center="center" :zoom="zoom"
                :scroll-wheel-zoom="true"
@@ -20,13 +20,13 @@
       <!--标记点-->
       <bm-marker :position="{lng: 116.404, lat: 39.915}" :dragging="true">
         <!--animation="BMAP_ANIMATION_BOUNCE"-->
-        <bm-label content="我爱北京天安门" :labelStyle="{color: 'red', fontSize : '18px'}" :offset="{width: -50, height: 30}"/>
+        <bm-label content="我爱北京天安门" :labelStyle="{color: 'red', fontSize : '18px'}" :offset="{width: -50, height: 30}"></bm-label>
       </bm-marker>
       <!--自定义控件-->
       <bm-control>
-        <el-button @click="addZoom(19)">缩放至最大</el-button>
-        <el-button @click="addZoom(10)">还原</el-button>
-        <el-button @click="addZoom(3)">缩放至最小</el-button>
+        <!--<el-button @click="addZoom(19)">缩放至最大</el-button>-->
+        <!--<el-button @click="addZoom(10)">还原</el-button>-->
+        <!--<el-button @click="addZoom(3)">缩放至最小</el-button>-->
       </bm-control>
       <!--定位控件-->
       <bm-geolocation anchor="BMAP_ANCHOR_BOTTOM_RIGHT" :showAddressBar="true" :autoLocation="true"></bm-geolocation>
@@ -52,9 +52,9 @@
         this.center.lat = 39.915
         this.zoom = 15
       },
-      addZoom (level) {
-        this.zoom = level
-      },
+      // addZoom (level) {
+      //   this.zoom = level
+      // },
       syncCenterAndZoom (e) {
         const {lng, lat} = e.target.getCenter()
         this.center.lng = lng

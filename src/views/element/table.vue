@@ -1,34 +1,34 @@
 <template>
-	<section>
+  <section>
     <el-row style="margin-bottom: 12px">
       <search-input placeholder="请输入产品ID/IMEI" v-model="searchValue" @on-search="getTableData(1)"></search-input>
     </el-row>
-		<el-table ref="multipleTable" :data="tableData" border stripe max-height="650" height="650"
+    <el-table ref="multipleTable" :data="tableData" border stripe max-height="650" height="650"
               style="width: 100%;text-align: center;" :row-class-name="tableRowClassName" tooltip-effect="dark"
-              @selection-change="handleSelectionChange" >
-			<el-table-column fixed type="selection" width="65">
-			</el-table-column>
-			<el-table-column prop="date" label="日期" width="150" sortable>
-			</el-table-column>
-			<el-table-column prop="name" label="姓名" width="150" sortable>
-			</el-table-column>
-			<el-table-column prop="sex" label="性别" width="100" :formatter="formatSex" sortable>
-			</el-table-column>
-			<el-table-column prop="address" label="地址" width="150" show-overflow-tooltip>
-			</el-table-column>
-			<el-table-column prop="province" label="省份" width="120">
-			</el-table-column>
-			<el-table-column prop="city" label="市区" width="120">
-			</el-table-column>
-			<el-table-column prop="zip" label="邮编" width="120">
-			</el-table-column>
-			<el-table-column fixed="right" label="操作" width="180">
-				<template slot-scope="scope">
-					<el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
-					<el-button type="text" size="small">编辑</el-button>
-				</template>
-			</el-table-column>
-		</el-table>
+              @selection-change="handleSelectionChange">
+      <el-table-column fixed type="selection" width="65">
+      </el-table-column>
+      <el-table-column prop="date" label="日期" width="150" sortable>
+      </el-table-column>
+      <el-table-column prop="name" label="姓名" width="150" sortable>
+      </el-table-column>
+      <el-table-column prop="sex" label="性别" width="100" :formatter="formatSex" sortable>
+      </el-table-column>
+      <el-table-column prop="address" label="地址" width="150" show-overflow-tooltip>
+      </el-table-column>
+      <el-table-column prop="province" label="省份" width="120">
+      </el-table-column>
+      <el-table-column prop="city" label="市区" width="120">
+      </el-table-column>
+      <el-table-column prop="zip" label="邮编" width="120">
+      </el-table-column>
+      <el-table-column fixed="right" label="操作" width="180">
+        <template slot-scope="scope">
+          <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
+          <el-button type="text" size="small">编辑</el-button>
+        </template>
+      </el-table-column>
+    </el-table>
     <el-col :span="24" class='btm-action'>
       <el-pagination
         v-if='paginations.total > 0'
@@ -43,13 +43,13 @@
       </el-pagination>
     </el-col>
     <!--<div v-if="tableData && tableData.length !== 0" style="text-align: center">-->
-      <!--<pagination :page="page" @size-change="handleSizeChange" @current-change="handleCurrentChange"></pagination>-->
+    <!--<pagination :page="page" @size-change="handleSizeChange" @current-change="handleCurrentChange"></pagination>-->
     <!--</div>-->
     <!-- <el-col :span="24" class="toolbar" style="width: 80%;">
             <el-button type="danger" @click="batchRemove" :disabled="this.multipleSelection.length===0">批量删除</el-button>
           <el-pagination background layout="prev, pager, next" @current-change="handleCurrentChange" :total="total" style="float:right;"></el-pagination>
         </el-col> -->
-    </section>
+  </section>
 </template>
 <script>
   // import {getUserListPage, removeUser, batchRemoveUser, editUser, addUser} from '../../api/api';
@@ -106,7 +106,7 @@
         }
       }
     },
-    created() {
+    created () {
       this.paginations.total = this.tableData.length
       this.page.pageTotal = this.tableData.length
     },
@@ -150,12 +150,12 @@
       handleClick (row) {
 
       },
-      handleSizeChange(val) {
+      handleSizeChange (val) {
         console.log('handleSizeChange')
         // this.page.pageSize = val
         // this.getTableData(1)
       },
-      handleCurrentChange(val, jumper = false) {
+      handleCurrentChange (val, jumper = false) {
         console.log('handleCurrentChange')
         // this.getTableData(val)
       },
@@ -170,6 +170,7 @@
     margin: 10px 0px;
     text-align: center;
   }
+
   .pagination {
     display: inline-block;
   }

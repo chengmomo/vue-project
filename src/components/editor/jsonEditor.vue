@@ -17,7 +17,7 @@
   import 'codemirror/addon/lint/lint.css'
   // require('script-loader!jsonlint')
   import 'codemirror/addon/lint/lint'
-  // import 'codemirror/addon/lint/json-lint'
+  import 'codemirror/addon/lint/json-lint'
 
   import 'codemirror/addon/fold/foldgutter.css'
   import 'codemirror/addon/fold/foldgutter.js'
@@ -61,7 +61,7 @@
         // 代码折叠
         lineWrapping: true,
         foldGutter: true,
-        gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter'],
+        gutters: ['CodeMirror-linenumbers', 'CodeMirror-foldgutter']
         // matchBrackets: true,  // 括号匹配
         // autoCloseBrackets: true
 
@@ -88,7 +88,7 @@
   }
 </script>
 
-<style>
+<style lang="scss">
   .json-editor .cm-s-rubyblue span.cm-string {
     color: #F08047;
   }

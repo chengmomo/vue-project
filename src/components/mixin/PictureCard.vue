@@ -1,6 +1,6 @@
 <template>
   <div class="card-container">
-    <el-row :gutter="20" style="padding: 6px">
+    <el-row :gutter="20" style="padding: 6px;">
       <el-col :span="span" v-for="(item,index) in data" :key="index">
         <div class="item">
           <img :src="item.src" class="item-img">
@@ -35,12 +35,12 @@
 
 <style scoped lang="scss">
   .card-container {
-    $width: 356px;
+    //$width: 350px;
     $height: 200px;
     .item {
       position: relative;
       height: $height;
-      width: $width;
+      //width: $width;
       margin: 0 auto;
       overflow: hidden;
       border-radius: 5px;
@@ -52,7 +52,8 @@
       }
     }
     .item-img {
-      width: 100%;
+      /*width: 100%;*/
+      height: $height;
       border-radius: 5px;
       transform-origin: 50% 24%;
       transition: all 0.5s ease-in-out;
@@ -60,7 +61,7 @@
     .item-text {
       position: absolute;
       // left: $width;
-      left: 220px;
+      left: 200px;
       top: 0;
       width: 100%;
       height: $height;

@@ -9,7 +9,7 @@
 
   export default {
     name: 'G2Line',
-    data() {
+    data () {
       return {
         chart: null
       }
@@ -39,15 +39,15 @@
       // this.drawChart()
     },
     watch: {
-      charData: function (val, oldVal) {// 监听charData,当变化时,触发这个回调函数绘制图表
+      charData: function (val, oldVal) { // 监听charData,当变化时,触发这个回调函数绘制图表
         console.log('new: %s, old: %s', val, oldVal)
         this.drawChart(val)
       }
     },
     methods: {
       drawChart: function (datas) {
-// 如果图形存在则删除再创建,这个地方感觉稍微有点坑
-// 具体的G2 api函数说明请看上面提供的官网地址,此处不再逐一说明
+        // 如果图形存在则删除再创建,这个地方感觉稍微有点坑
+        // 具体的G2 api函数说明请看上面提供的官网地址,此处不再逐一说明
         this.chart && this.chart.destroy()
         let data = datas
         this.chart = new G2.Chart({

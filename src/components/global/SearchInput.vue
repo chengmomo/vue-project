@@ -9,7 +9,7 @@
 <script>
   export default {
     name: 'SearchInput',
-    data() {
+    data () {
       return {
         searchValue: this.value
       }
@@ -31,7 +31,7 @@
       }
     },
     methods: {
-      onSearch() {
+      onSearch () {
         this.$emit('change', this.searchValue)
         this.$emit('on-search')
         // this.$emit('on-search', this.searchValue)

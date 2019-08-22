@@ -45,7 +45,7 @@
 </template>
 <script>
   export default {
-    data() {
+    data () {
       return {
         active: 1,
         data: [{
@@ -90,7 +90,7 @@
       }
     },
     methods: {
-      handleNodeClick(data) {
+      handleNodeClick (data) {
         console.log(data)
       }
     }

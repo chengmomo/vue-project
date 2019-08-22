@@ -1,7 +1,20 @@
 <template>
   <div class="page-container">
     <p class="warn-content">
-      <a href="https://github.com/kamranahmedse/driver.js" target="_blank">driver.js.</a>
+      <a href="https://github.com/kamranahmedse/driver.js" target="_blank">
+        参考 driver.js
+      </a>
+    </p>
+    <p style="padding: 10px 0">
+      <router-link to="https://github.com/kamranahmedse/driver.js" target="_blank">
+        <el-button type="primary">文档</el-button>
+      </router-link>
+      <a :href="url" target="_blank">
+        <el-button type="primary">
+          文档
+        </el-button>
+      </a>
+      <el-button type="primary" @click.prevent.stop="open">文档open</el-button>
     </p>
     <el-button icon="el-icon-question" type="primary" @click.prevent.stop="guide">Show Guide</el-button>
   </div>
@@ -14,34 +27,25 @@
 
   export default {
     name: 'Guide',
-    data() {
+    data () {
       return {
-        driver: null
+        driver: null,
+        url: 'https://help.ctwing.cn/ding-yue-tui-song/mqxiao-xi-tui-song.html'
       }
     },
-    mounted() {
+    mounted () {
       this.driver = new Driver()
     },
     methods: {
-      guide() {
+      guide () {
         this.driver.defineSteps(steps)
         this.driver.start()
+      },
+      open () {
+        window.open(this.url)
       }
     }
   }
 </script>
 <style scoped lang="scss">
-  .warn-content {
-    background: rgba(66, 185, 131, .1);
-    border-radius: 2px;
-    padding: 16px;
-    padding: 1rem;
-    line-height: 1.6rem;
-    word-spacing: .05rem;
-    margin-bottom: 10px;
-    a {
-      color: #42b983;
-      font-weight: 600;
-    }
-  }
 </style>

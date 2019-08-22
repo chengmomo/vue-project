@@ -29,11 +29,12 @@
           ]
         },
         options: {
-          // span: 6,
+          span: 6,
           data: [
             {src: 'static/img/card/card-1.jpg', title: '景点1', text: 'dsnsanxsnx'},
             {src: 'static/img/card/card-2.jpg', title: '景点2', text: 'saxxxx'},
-            {src: 'static/img/card/card-3.jpg', title: '景点3', text: 'xxxx'}
+            {src: 'static/img/card/card-3.jpg', title: '景点3', text: 'xxxx'},
+            {src: 'static/img/card/card-1.jpg', title: '景点4', text: 'xxxx'}
           ]
         }
       }

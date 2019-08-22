@@ -3,7 +3,8 @@
     <span class="pagination_total" v-if="page.layout.includes('total')">共 {{page.pageTotal}} 条</span>
     <span class="pagination_sizes" v-if="page.layout.includes('sizes')">
         <el-select size="mini" v-model="page.pageSize" @change="onChangeSize">
-          <el-option v-for="item in page.pageSizes" :key="item.label" :label="item.label" :value="item.value"></el-option>
+          <el-option v-for="item in page.pageSizes" :key="item.label" :label="item.label"
+                     :value="item.value"></el-option>
         </el-select>
       </span>
     <button
@@ -35,11 +36,11 @@
 <script>
   export default {
     name: 'BasePagination',
-    data() {
+    data () {
       return {}
     },
     props: ['page'],
-    mounted() {
+    mounted () {
 
     },
     watch: {
@@ -49,18 +50,18 @@
       }
     },
     methods: {
-      onChangeSize(val) {
+      onChangeSize (val) {
         this.$emit('size-change', val)
       },
-      onPrev() {
+      onPrev () {
         let pageCurrent = this.page.pageCurrent - 1
         this.$emit('current-change', pageCurrent)
       },
-      onNext() {
+      onNext () {
         let pageCurrent = this.page.pageCurrent + 1
         this.$emit('current-change', pageCurrent)
       },
-      onJump(val) {
+      onJump (val) {
         // 参数1：当前页；参数2：是否跳页
         this.$emit('current-change', val, true)
       }

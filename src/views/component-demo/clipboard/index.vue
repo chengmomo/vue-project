@@ -29,24 +29,24 @@
 
   export default {
     name: 'ClipboardDemo',
-    data() {
+    data () {
       return {
         activeName: 'directly',
         inputData: 'https://github.com/PanJiaChen/vue-element-admin'
       }
     },
     methods: {
-      handleCopy(text, event) {
+      handleCopy (text, event) {
         clip(text, event)
       },
-      onCopy(e) {
+      onCopy (e) {
         alert('复制成功！')
       },
-      onError(e) {
+      onError (e) {
         alert('复制失败！')
       },
       // Firefox 48.0，Chrome 60.0，IE 8 都能用
-      copyUrl() {
+      copyUrl () {
         // 问题：若从后台请求数据量大时，放在textarea里chrome浏览器第一次复制会报错，第二次可以
         // 解决方法：将赋值放在请求后台数据之后，立即渲染组件，否则复制时可能没有全好导致失败
         let input = document.getElementById('input')
@@ -67,7 +67,7 @@
           alert('复制失败')
         }
       },
-      copyUrl2() {
+      copyUrl2 () {
         let input = document.createElement('textarea')   // 直接构建input
         input.value = this.inputData   // 设置内容
         document.body.appendChild(input)        // 添加临时实例

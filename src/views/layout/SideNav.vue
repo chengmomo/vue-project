@@ -45,7 +45,7 @@
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .nav-bar {
     background-color: #dcdcdc;
     position: fixed;

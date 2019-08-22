@@ -6,6 +6,8 @@
 </template>
 　　　　
 <script>
+  /* eslint-disable no-undef */
+
   export default {
     name: 'UE',
     data () {

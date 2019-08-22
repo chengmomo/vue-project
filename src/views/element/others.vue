@@ -47,7 +47,7 @@
 <script>
   export default {
     name: 'Others',
-    data() {
+    data () {
       return {
         currentDate: new Date()
       }
