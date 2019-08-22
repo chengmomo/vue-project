@@ -6,7 +6,6 @@ const path = require('path')
 
 module.exports = {
   dev: {
-
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
@@ -23,7 +22,7 @@ module.exports = {
     // Use Eslint Loader?
     // If true, your code will be linted during bundling and
     // linting errors and warnings will be shown in the console.
-    useEslint: false,
+    useEslint: true,
     // If true, eslint errors and warnings will also be shown in the error overlay
     // in the browser.
     showEslintErrorsInOverlay: false,
@@ -53,7 +52,7 @@ module.exports = {
     index: path.resolve(__dirname, '../dist/index.html'),
 
     // 打包Paths
-    assetsRoot: path.resolve(__dirname, '../dist'), // 编译输出的静态资源路径
+    assetsRoot: path.resolve(__dirname, '../dist'), // 编译输出的静态资源根路径
     assetsSubDirectory: 'static', // 编译输出的二级目录
     assetsPublicPath: '/', // 编译发布的根目录，可配置为资源服务器域名或 CDN 域名
 
