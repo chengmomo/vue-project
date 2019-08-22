@@ -108,9 +108,10 @@ router.beforeEach((to, from, next) => {
 // 创建实例化对象
 /* eslint-disable no-new */
 new Vue({
-  // el: '#app', // 目的地: el: '#app' Or $mount(document.querySelector('#app'))
+  el: '#app', // 目的地: el: '#app' 或 $mount(document.querySelector('#app'))
   router,
   store,
   components: {App}, // 挂子
   template: '<App/>' // 用子：如果template定义了内容则优先加载，否则加载#app的模板
-}).$mount(document.querySelector('#app'))
+})
+// }).$mount(document.querySelector('#app'))

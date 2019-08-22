@@ -34,25 +34,24 @@ const webpackConfig = merge(baseWebpackConfig, {
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
-    // 位于生产环境下
+    // DefinePlugin：允许你创建可在编译时配置的全局常量
     new webpack.DefinePlugin({
-      'process.env': env
+      'process.env': env // 位于生产环境下
     }),
     // UglifyJsPlugin：压缩js代码
     new UglifyJsPlugin({
       uglifyOptions: {
-        compress: {
+        compress: { //压缩配置
           warnings: false,
           // drop_debugger: true,
           // drop_console: true // 去掉控制台打印
         }
       },
-      sourceMap: config.build.productionSourceMap,
+      sourceMap: config.build.productionSourceMap,//生成sourceMap文件
       parallel: true
     }),
     // extract css into its own file
-    // ExtractTextPlugin：用于从webpack生成的bundle中提取文本到特定文件中的插件
-    // 抽取文本。比如打包之后的index页面有style插入，就是这个插件抽取出来的，减少请求
+    // ExtractTextPlugin：从 bundle 中提取文本（CSS）到单独的文件；比如打包之后的index页面有style插入，就是这个插件抽取出来的，减少请求
     new ExtractTextPlugin({
       filename: utils.assetsPath('css/[name].[contenthash].css'),
       // Setting the following option to `false` will not extract CSS from codesplit chunks.
@@ -63,11 +62,11 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
-    // OptimizeCSSPlugin：优化css的插件
+    // OptimizeCSSPlugin：压缩提取的CSS，并解决ExtractTextPlugin分离出的js重复的问题（多个文件引入同一CSS文件）
     new OptimizeCSSPlugin({
       cssProcessorOptions: config.build.productionSourceMap
-        ? { safe: true, map: { inline: false } }
-        : { safe: true }
+        ? {safe: true, map: {inline: false}}
+        : {safe: true}
     }),
     // (function () {
     //   return Object.assign({}, {
@@ -85,37 +84,43 @@ const webpackConfig = merge(baseWebpackConfig, {
     // generate dist index.html with correct asset hash for caching.
     // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin
-    // HtmlWebpackPlugin：一个用于生成HTML文件并自动注入依赖文件（link/script）的webpack插件
-    // 如果创建多个HtmlWebpackPlugin的实例，就会生成多个页面
+    // HtmlWebpackPlugin：生成HTML文件的插件，引入CSS文件和js文件，用于服务器访问（如果创建多个HtmlWebpackPlugin的实例，就会生成多个页面）
     new HtmlWebpackPlugin({
+      // title:'vue-project', //用于生成的HTML文档的标题
+      // favicon: "", //指定页面图标
       filename: process.env.NODE_ENV === 'testing'
         ? 'index.html'
-        : config.build.index,
-      template: 'index.html',
-      // 要把<script>标签插入到页面哪个标签里(body|true|head|false)
+        : config.build.index, // 生成的模板文件的名字 默认index.html
+      template: 'index.html', //模板来源文件
+      //js文件注入位置(body|true|head|false)
       inject: true,
-      // hash如果为true，将添加hash到所有包含的脚本和css文件，对于解除cache很有用
-      // minify用于压缩html文件
-      minify: { // 打包后压缩
-        removeComments: true, // 打包后删除html中的注释
-        collapseWhitespace: true, // 打包后删除空白符与换行
-        removeAttributeQuotes: true // 删除属性的引号
+      // 是否生成hash添加在引入文件地址的末尾，类似于我们常用的时间戳，这个可以避免缓存带来的麻烦
+      // 添加hash形式如下所示：html <script type="text/javascript" src="common.js?a3e1396b501cdd9041be"></script>
+      // hash: false,
+      // 打包后压缩配置
+      minify: {
+        removeComments: true, // 打包后删除HTML中的注释
+        collapseWhitespace: true, // 打包后删除HTML中空白符与换行
+        removeAttributeQuotes: true // 删除HTML元素中属性的引号
         // more options:
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-      chunksSortMode: 'dependency' // 模块排序，按照我们需要的顺序排序
+      // 引入模块的排序方式：dependency表示按照dependency的顺序引入
+      chunksSortMode: 'dependency'
     }),
     // keep module.id stable when vender modules does not change
+    // HashedModuleIdsPlugin：热更新插件
     new webpack.HashedModuleIdsPlugin(),
     // enable scope hoisting
     new webpack.optimize.ModuleConcatenationPlugin(),
     // split vendor js into its own file
-    // CommonsChunkPlugin：提取入口文件里面的公共模块
+    // CommonsChunkPlugin：提取入口文件里面的第三方库和公共模块
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
+      name: 'vendor',//文件名
       minChunks (module) {
         // any required modules inside node_modules are extracted to vendor
+        // 如果模块有一个路径，而且在路径中有 js 文件，并且这个模块是属于 node_modules 中的模块, 那这个模块就会被抽离出来放进 vendor
         return (
           module.resource &&
           /\.js$/.test(module.resource) &&
@@ -140,11 +145,11 @@ const webpackConfig = merge(baseWebpackConfig, {
       children: true,
       minChunks: 3
     }),
-
     // copy custom static assets
+    // CopyWebpackPlugin: //将单个文件或整个目录复制到构建目录
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, '../static'),
+        from: path.resolve(__dirname, '../static'), //将static里的文件复制到打包目录
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
@@ -152,21 +157,23 @@ const webpackConfig = merge(baseWebpackConfig, {
   ]
 })
 
-/* 开启 gzip 的情况下使用下方的配置 */
-if (config.build.productionGzip) {
+// 额外配置
+if (config.build.productionGzip) {//配置文件开启了gzip压缩
+  //引入压缩文件的组件，该插件会对生成的文件进行压缩，生成一个.gz文件
   const CompressionWebpackPlugin = require('compression-webpack-plugin')
 
   webpackConfig.plugins.push(
+    // CompressionWebpackPlugin: 预先提供带 Content-Encoding 编码的压缩版本的资源
     new CompressionWebpackPlugin({
-      asset: '[path].gz[query]',
-      algorithm: 'gzip',
-      test: new RegExp(
+      asset: '[path].gz[query]',//目标文件名
+      algorithm: 'gzip',//使用gzip压缩
+      test: new RegExp(//满足正则表达式的文件会被压缩
         '\\.(' +
         config.build.productionGzipExtensions.join('|') +
         ')$'
       ),
-      threshold: 10240,
-      minRatio: 0.8
+      threshold: 10240,//资源文件大于10240B = 10KB大小才会被压缩
+      minRatio: 0.8//最小压缩比达到0.8时才会被压缩
     })
   )
 }
