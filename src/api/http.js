@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { MessageBox, Loading } from 'element-ui'
+import {MessageBox, Loading} from 'element-ui'
 // import store from '@/store'
 // import { getToken } from '@/utils/auth'
 
@@ -14,25 +14,29 @@ import { MessageBox, Loading } from 'element-ui'
 // create an axios instance
 const instance = axios.create({
   // baseURL: axios.$context
-  baseURL: process.env.API_ROOT
-  // timeout: 30000 // request timeout
+  baseURL: process.env.API_ROOT,
+  // 对于特殊请求，如果不需要timeout可在配置项中设置为0
+  timeout: 30000
 })
 
 // request interceptor
-let loadingInstance
+let loadingInstance // loading对象
+let isShowLoading
+let apiName // 接口名称描述
 instance.interceptors.request.use(
   config => {
+    apiName = config.apiName ? config.apiName : ''
+    isShowLoading = config.isShowLoading
     /**
-     * 1、请求开始loading
+     * 1、开启loading
      * 1）结合 vuex 开启全屏 loading 动画
      * 2）在請求的配置中 設置{isShowLoading: true}，請求發出後，顯示loading，默認情況不顯示loading
      */
-    let isShowLoading = config.isShowLoading
     if (isShowLoading !== 'undefined' && isShowLoading) {
       loadingInstance = Loading.service({fullscreen: true, target: '.container'})
     }
     /**
-     *  2、带上 token , 可以结合 vuex 或者 localStorage
+     * 2、带上token, 可以结合vuex或者localStorage
      */
     // if (store.getters.token) {
     //   config.headers['X-Token'] = getToken() // 让每个请求携带token-- ['X-Token']为自定义key 请根据实际情况自行修改
@@ -43,23 +47,13 @@ instance.interceptors.request.use(
     return config
   },
   error => {
-    console.log(error) // for debug
-    MessageBox({
-      title: '提示',
-      message: '加载超时',
-      callback: action => {
-        loadingInstance.close()
-      }
-    })
     return Promise.reject(error)
   })
 
 // response interceptor
 instance.interceptors.response.use(
   response => {
-    /**
-     * 关闭loading
-     */
+    // 关闭loading
     let isShowLoading = response.config.isShowLoading
     if (isShowLoading !== 'undefined' && isShowLoading) {
       loadingInstance.close()
@@ -94,10 +88,21 @@ instance.interceptors.response.use(
     return response
   },
   error => {
+    /**
+     *  3、超时处理
+     */
+    if (error.code === 'ECONNABORTED' && error.message.indexOf('timeout') !== -1) {
+      MessageBox({
+        title: '提示',
+        message: apiName + '加载超时',
+        type: 'warning',
+        callback: action => {
+          loadingInstance.close()
+        }
+      })
+    }
     if (error.response) {
-      /**
-       * 关闭loading
-       */
+      // 关闭loading
       let isShowLoading = error.response.config.isShowLoading
       if (isShowLoading !== 'undefined' && isShowLoading) {
         loadingInstance.close()
