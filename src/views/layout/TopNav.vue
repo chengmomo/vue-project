@@ -8,7 +8,7 @@
       <el-row tyle="flex" style="min-width:1000px">
         <el-col :span="18" class='menu-container'>
           <el-menu class="top-menu" mode="horizontal" router unique-opened
-                   background-color="transparent" text-color="#fff" active-text-color="#545c64"
+                   background-color="transparent" active-text-color="#fff" text-color="#545c64"
                    :default-active="$route.matched[0].path">
             <el-menu-item v-for='(item,index) in $router.options.routes' :index="item.path" :key='item.path'
                           v-if='!item.hidden' class="el-menu-item-demo" @click="menuClick(item.path)">
@@ -62,17 +62,24 @@
         <el-button v-dbClick type="primary" @click="updUserPass('user_info')">确 定</el-button>
       </span>
     </el-dialog>
-    <el-dialog size="small" :title="dialog.title" :visible.sync="dialog.show_set" v-model="dialog.show_set"></el-dialog>
+    <drawer :visible="dialog.show_set" title="系统设置" width="420" @on-close="dialog.show_set = false">
+      <div>aaa</div>
+      <div slot="footer" style="text-align: right">
+        <el-button @click="dialog.show_set = false">取消</el-button>
+        <el-button type="primary" @click="dialog.show_set = false">确 定</el-button>
+      </div>
+    </drawer>
   </el-row>
 </template>
 <script>
   import * as api from '@/api/api'
-  import SkinComp from '../../components/global/SkinComp'
   import {global} from '@/global/global'
+  import Drawer from 'components/global/Drawer'
+  import SkinComp from 'components/global/SkinComp'
 
   export default {
     name: 'TopNav',
-    components: {SkinComp},
+    components: {Drawer, SkinComp},
     data () {
       return {
         dialog: {
@@ -161,8 +168,6 @@
 <style scoped lang="scss">
   .top-bar__wrap {
     padding: 0;
-    /*background: #21baa9;*/
-    /*box-shadow: 1px 2px 4px #999999;*/
   }
 
   .logo-container {
@@ -170,7 +175,6 @@
     padding-left: 10px;
     width: 245px;
     box-sizing: border-box;
-    /*border-right: .5px solid #666;*/
   }
 
   .logo {
