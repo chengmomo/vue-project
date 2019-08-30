@@ -101,7 +101,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       minify: {
         removeComments: true, // 打包后删除HTML中的注释
         collapseWhitespace: true, // 打包后删除HTML中空白符与换行
-        removeAttributeQuotes: true // 删除HTML元素中属性的引号
+        removeAttributeQuotes: false // 删除HTML元素中属性的引号
         // more options:
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
