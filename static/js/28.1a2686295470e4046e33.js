@@ -1,0 +1,1 @@
+webpackJsonp([28],{Lbao:function(e,t,r){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n={render:function(){var e=this.$createElement,t=this._self._c||e;return t("div",[t("h2",[this._v(this._s(this.msg))])])},staticRenderFns:[]},s=r("C7Lr")({data:function(){return{msg:"Error:404"}}},n,!1,null,null,null);t.default=s.exports}});
