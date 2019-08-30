@@ -2,7 +2,7 @@
   "name": "vue-project",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "zhaichengjuan <zhaichengjuan@gmail.com>",
+  "author": "zhaichengjuan",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
@@ -20,6 +20,7 @@
     "driver.js": "^0.9.5",
     "echarts": "^3.8.5",
     "element-ui": "^2.4.8",
+    "jquery": "^3.4.1",
     "js-cookie": "^2.2.0",
     "mavon-editor": "^2.4.16",
     "vue": "^2.5.2",

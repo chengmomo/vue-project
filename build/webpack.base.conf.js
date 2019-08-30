@@ -4,6 +4,7 @@ const path = require('path') // 使用 NodeJS 自带的文件路径工具
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
+// const webpack = require('webpack')
 
 // 拼接出绝对路径
 function resolve (dir) {
@@ -52,8 +53,8 @@ module.exports = {
       'assets': resolve('src/assets'),
       // 调用components下组件可以使用 import 'components/confirm'
       'components': resolve('src/components'),
-      // 引入jquery设置别名: import $ from 'jquery'
-      'jquery': resolve('static/js/jquery.js'),
+      // 引入本地jquery设置别名: import $ from 'jquery'
+      // 'jquery': resolve('static/js/jquery.js'),
     },
     // modules：配置Webpack 去哪些目录下寻找第三方模块，默认是只会去node_modules目录下寻找
     modules: ['./src/components', 'node_modules'] // 调用components下组件可以使用 import 'confirm'
@@ -102,7 +103,11 @@ module.exports = {
     ]
   },
   // plugins: 配置插件项
-  plugins: [],
+  plugins: [
+    // new webpack.ProvidePlugin({
+    //   $: 'jquery' //不想用$可以使用其他关键字，如jQuery: 'jquery'
+    // })
+  ],
   // 以下选项是Node.js全局变量或模块，这里主要是防止webpack注入一些Node.js的东西到vue中
   node: {
     // prevent webpack from injecting useless setImmediate polyfill because Vue
