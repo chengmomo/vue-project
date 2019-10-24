@@ -1,5 +1,8 @@
-// 获取当天最后一秒时间戳 23:59:59
-export const GET_END_DATE = new Date(new Date(new Date().toLocaleDateString()).getTime() + 24 * 60 * 60 * 1000 - 1)
+// 获取当天最后一秒时间戳
+// export const GET_END_DATE = new Date(new Date(new Date().toLocaleDateString()).getTime() + 24 * 60 * 60 * 1000 - 1)
+// 兼容ie
+var todayTime = (new Date((new Date()).getFullYear(), (new Date()).getMonth(), (new Date()).getDate(), 24, 0, 0)).getTime()
+export const GET_END_DATE = new Date(todayTime - 1)
 
 export const pickerOptions = [
   {
