@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import Time from '../global/time'
 
 Vue.directive('dbClick', {
   bind (el, binding) {
@@ -18,11 +19,21 @@ Vue.directive('dbClick', {
   }
 })
 
-// Vue.directive('***',{
-//   inserted: function(el){
-//     //....
-//   }
-// })
+// <div v-time="(new Date()).getTime()"></div>
+// <div v-time="1488930695721"></div>
+Vue.directive('time', {
+  bind: function (el, binding) {
+    el.innerHTML = Time.getFormatTime(binding.value)
+    // 定义变量：el.xxx
+    el.__timeout__ = setInterval(function () {
+      el.innerHTML = Time.getFormatTime(binding.value)
+    }, 60000)
+  },
+  unbind: function (el) {
+    clearInterval(el.__timeout__)
+    delete el.__timeout__
+  }
+})
 
 export {Vue}
 

@@ -22,7 +22,7 @@ import {global} from '@/global/global'
 import * as filters from './filters' // 全局filter
 import '@/directives/directives'  // 全局自定义directives
 // import mytip from './directives/mytip' // 引入单个directive
-// import dbClick from './directives/dbClick/index' //引入单个directive
+// import dbClick from './directives/dbClick' //引入插件方式定义的directive
 
 // 引入百度地图
 import BaiduMap from 'vue-baidu-map'
@@ -95,15 +95,6 @@ if (localStorage.getItem('themeValue')) {
 
 Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false
-
-//动态修改title
-router.beforeEach((to, from, next) => {
-  console.log(to)
-  if (to.meta.title) {
-    document.title = to.meta.title || 'AEP'
-  }
-  next()
-})
 
 // 创建实例化对象
 /* eslint-disable no-new */

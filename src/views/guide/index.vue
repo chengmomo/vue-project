@@ -17,6 +17,8 @@
       <el-button type="primary" @click.prevent.stop="open">文档open</el-button>
     </p>
     <el-button icon="el-icon-question" type="primary" @click.prevent.stop="guide">Show Guide</el-button>
+    <div v-time="timeNow"></div>
+    <div v-time="timeBefore"></div>
   </div>
 </template>
 
@@ -30,7 +32,9 @@
     data () {
       return {
         driver: null,
-        url: 'https://help.ctwing.cn/ding-yue-tui-song/mqxiao-xi-tui-song.html'
+        url: 'https://help.ctwing.cn/ding-yue-tui-song/mqxiao-xi-tui-song.html',
+        timeNow: (new Date()).getTime(),
+        timeBefore: 1488930695721
       }
     },
     mounted () {

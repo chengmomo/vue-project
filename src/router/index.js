@@ -53,20 +53,28 @@ const router = new Router({
 //   {path: '/test2', component: resolve => require(['@/components/test2'], resolve)}
 // ])
 
-// 路由拦截器
+// 路由拦截器：校验是否登录
 // router.beforeEach((to, from, next) => {
-// if (to.matched.some(res => res.meta.requireAuth)) { // 判断是否需要登录权限
-//   if (localStorage.getItem('username')) { // 判断是否登录
+//   if (to.matched.some(res => res.meta.requireAuth)) { // 判断是否需要登录权限
+//     if (localStorage.getItem('username')) { // 判断是否登录
+//       next()
+//     } else { // 没登录 则跳转页面
+//       next({
+//         path: '/login',
+//         query: {redirect: to.fullPath}
+//       })
+//     }
+//   } else {
 //     next()
-//   } else { // 没登录 则跳转页面
-//     next({
-//       path: '/login',
-//       query: {redirect: to.fullPath}
-//     })
 //   }
-// } else {
-//   next()
-// }
 // })
+
+//动态修改title
+router.beforeEach((to, from, next) => {
+  if (to.meta.title) {
+    document.title = to.meta.title || 'AEP'
+  }
+  next()
+})
 
 export default router
