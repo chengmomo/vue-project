@@ -10,7 +10,7 @@ let menuElement = [
 export default [
   {
     path: '/home',
-    name: 'UI框架学习',
+    name: 'tab.home',
     component: _import('Layout'),
     redirect: '/home/guide',
     meta: {title, icon: 'el-icon-menu'},

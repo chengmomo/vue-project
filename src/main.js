@@ -18,11 +18,13 @@ import '../static/js/UE/ueditor.all.min.js'
 import '../static/js/UE/lang/zh-cn/zh-cn.js'
 import '../static/js/UE/ueditor.parse.min.js'
 
+// 引入过滤器、指令等
 import {global} from '@/global/global'
 import * as filters from './filters' // 全局filter
 import '@/directives/directives'  // 全局自定义directives
 // import mytip from './directives/mytip' // 引入单个directive
 // import dbClick from './directives/dbClick' //引入插件方式定义的directive
+import i18n from './assets/i18n/index'
 
 // 引入百度地图
 import BaiduMap from 'vue-baidu-map'
@@ -46,11 +48,14 @@ import VueCountUp from 'vue-z-countup'
 // import 'codemirror/lib/codemirror.css' // css，必要
 // Vue.use(VueCodemirror)
 
-// 注册ElementUI
 ElementUI.Pagination.props.layout.default = 'sizes, prev, pager, next, jumper'
 Vue.use(ElementUI)
 Vue.use(VueClipboards)
 Vue.use(VueCountUp)
+Vue.use(BaiduMap, {
+  // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
+  ak: 'YFS05bu24wzBZ4P3dCyGrBAIQVWYlEz1'
+})
 
 // 注册自定义指令
 // Vue.use(mytip)
@@ -81,11 +86,6 @@ requireComponent.keys().forEach(fileName => {
   )
 })
 
-Vue.use(BaiduMap, {
-  // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
-  ak: 'YFS05bu24wzBZ4P3dCyGrBAIQVWYlEz1'
-})
-
 // 加载用户主题
 if (localStorage.getItem('themeValue')) {
   global.changeTheme(localStorage.getItem('themeValue'))
@@ -102,6 +102,7 @@ new Vue({
   el: '#app', // 目的地: el: '#app' 或 $mount(document.querySelector('#app'))
   router,
   store,
+  i18n,
   components: {App}, // 挂子
   template: '<App/>' // 用子：如果template定义了内容则优先加载，否则加载#app的模板
 })

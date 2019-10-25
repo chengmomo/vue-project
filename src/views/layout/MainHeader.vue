@@ -3,7 +3,7 @@
     <strong class="breadcrumb-title">{{$route.name}}</strong>
     <el-breadcrumb separator="/" class="breadcrumb-inner">
       <!--方法一-->
-      <el-breadcrumb-item :to="{ path: $route.matched[0].path }">{{ $route.matched[0].name }}</el-breadcrumb-item>
+      <el-breadcrumb-item :to="{ path: $route.matched[0].path }">{{ $t($route.matched[0].name)}}</el-breadcrumb-item>
       <el-breadcrumb-item v-for="item in $route.matched.slice(1)" :key="item.path">
         {{ item.name }}
       </el-breadcrumb-item>

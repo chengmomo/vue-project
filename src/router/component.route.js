@@ -22,7 +22,7 @@ let componentChart = [
 export default [
   {
     path: '/component',
-    name: '组件',
+    name: 'tab.component',
     component: _import('Layout'),
     redirect: '/component/dashboard',
     meta: {title, icon: 'el-icon-goods'},

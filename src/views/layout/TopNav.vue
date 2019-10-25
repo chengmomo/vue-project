@@ -5,7 +5,7 @@
       <span class='logo-text'>Vue</span>
     </div>
     <div class="right-container">
-      <el-row tyle="flex" style="min-width:1000px">
+      <el-row tyle="flex" justify="end" style="min-width:1000px">
         <el-col :span="18" class='menu-container'>
           <el-menu class="top-menu" mode="horizontal" router unique-opened
                    background-color="transparent" active-text-color="#fff" text-color="#545c64"
@@ -13,28 +13,32 @@
             <el-menu-item v-for='(item,index) in $router.options.routes' :index="item.path" :key='item.path'
                           v-if='!item.hidden' class="el-menu-item-demo" @click="menuClick(item.path)">
               <!--<i :class="item.meta.icon" v-if="item.meta"></i>-->
-              {{item.name}}{{item.path}}
+              <!--{{item.name}}{{item.path}}-->
+              {{$t(item.name)}}
             </el-menu-item>
           </el-menu>
         </el-col>
-        <el-col :span="6" class='user-container' justify="middle">
+        <el-col :span="6" class='user-container'>
           <div class="right-menu">
-            <el-tooltip effect="dark" content="主题" placement="bottom">
-              <skin-comp class="right-menu-item"></skin-comp>
-            </el-tooltip>
+            <!--<el-tooltip effect="dark" :content="$t('tab.theme')" placement="bottom">-->
+            <skin-comp class="right-menu-item"></skin-comp>
+            <!--</el-tooltip>-->
+            <lang-comp class="right-menu-item"></lang-comp>
             <div>
-              <img src="@/assets/imgs/logo.png" class='logo' alt="">
-              <el-dropdown trigger="click" menu-align="start" @command='setDialogInfo' class="animated fadeIn">
+              <el-dropdown trigger="hover" menu-align="start" @command='setDialogInfo' class="animated fadeIn">
                 <span class="el-dropdown-link">
-                  zhaichengjuan
-                  <i class="aep-icon icon-erweima"></i>
+                  {{$t('tab.setting')}}
                 </span>
                 <el-dropdown-menu slot="dropdown">
-                  <el-dropdown-item command='pass'>修改密码</el-dropdown-item>
-                  <el-dropdown-item command='set'>系统设置</el-dropdown-item>
-                  <el-dropdown-item command='logout' divided>退出</el-dropdown-item>
+                  <el-dropdown-item v-for="(item, index) in settingArr" :key="index" :command="item">
+                    {{$t('settingOptions.' + item)}}
+                  </el-dropdown-item>
                 </el-dropdown-menu>
               </el-dropdown>
+            </div>
+            <div style="margin-left: 20px;">
+              <img src="@/assets/imgs/logo.png" class='logo' alt="">
+              <span class="nav-text">{{ $t('home.hello') }}</span>
             </div>
           </div>
         </el-col>
@@ -76,10 +80,11 @@
   import {global} from '@/global/global'
   import Drawer from 'components/global/Drawer'
   import SkinComp from 'components/global/SkinComp'
+  import LangComp from 'components/global/LangComp'
 
   export default {
     name: 'TopNav',
-    components: {Drawer, SkinComp},
+    components: {LangComp, Drawer, SkinComp},
     data () {
       return {
         dialog: {
@@ -92,7 +97,8 @@
             password_confirm: ''
           },
           user_info_rules: {}
-        }
+        },
+        settingArr: ['pass', 'set', 'logout']
       }
     },
     mounted () {
@@ -173,7 +179,7 @@
   .logo-container {
     float: left;
     padding-left: 10px;
-    width: 245px;
+    width: 200px;
     box-sizing: border-box;
   }
 
@@ -209,6 +215,8 @@
   .el-menu-item-demo {
     font-size: 16px;
     width: 140px;
+    text-align: center;
+    font-weight: bold;
   }
 
   .user-container {
@@ -216,6 +224,8 @@
     .right-menu {
       height: 100%;
       display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
       align-items: center;
     }
     .right-menu-item {
@@ -223,10 +233,13 @@
     }
     .el-dropdown-link {
       color: #fff;
-      font-size: 18px;
       line-height: 60px;
-      margin-left: 20px;
+    }
+    .nav-text {
+      color: white;
+      font-size: 14px;
+      padding: 0 10px;
+      line-height: 60px;
     }
   }
-
 </style>

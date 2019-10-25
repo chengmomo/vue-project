@@ -1,11 +1,11 @@
 <template>
   <div>
-    <el-dropdown @command="handleCommandSkin" trigger="hover" class="eldropdown">
-      <span class="el-dropdown-link lang">主题</span>
+    <el-dropdown @command="handleCommandSkin" trigger="hover">
+      <span class="el-dropdown-link lang">{{$t('tab.theme')}}</span>
       <el-dropdown-menu slot="dropdown">
         <el-dropdown-item v-for="(item,index) in skins" :key="index" :command="item.name"
-                          :disabled="skinName===item.name">
-          {{item.label}}
+                          :disabled="skinName === item.name">
+          {{$t('skinOptions.' + item.name)}}
         </el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
@@ -19,10 +19,10 @@
     data () {
       return {
         skins: [
-          {name: 'Blue', label: 'Blue'},
-          {name: 'Green', label: 'Green'},
-          {name: 'Purple', label: 'Purple'},
-          {name: 'Default', label: 'Default'}
+          {name: 'Blue'},
+          {name: 'Green'},
+          {name: 'Purple'},
+          {name: 'Default'}
         ],
         skinName: 'Default'
       }
@@ -43,13 +43,5 @@
   .lang {
     cursor: pointer;
     color: white;
-  }
-
-  .eldropdown {
-    margin-right: 5px;
-  }
-
-  .skin {
-    cursor: pointer;
   }
 </style>
