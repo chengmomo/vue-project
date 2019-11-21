@@ -5,7 +5,8 @@ let menuElement = [
   {name: 'Form'},
   {name: 'Tree'},
   {name: 'Table'},
-  {name: 'Collapse'}
+  {name: 'Collapse'},
+  {name: 'Tabs'}
 ]
 export default [
   {
@@ -28,31 +29,11 @@ export default [
         redirect: '/home/element/form',
         meta: {title, icon: 'el-icon-picture', menus: menuElement},
         children: [
-          {
-            path: 'form',
-            component: _import('element/form'),
-            name: 'Form',
-            meta: {title}
-          },
-          {
-            path: 'tree',
-            component: _import('element/tree'),
-            name: 'Tree',
-            meta: {title}
-          },
-          {
-            path: 'table',
-            component: _import('element/table'),
-            name: 'Table',
-            meta: {title}
-          },
-          {
-            path: 'collapse',
-            component: _import('element/collapse'),
-            name: 'Collapse',
-            meta: {title}
-          }
-          // {path: 'tab/others', component: _import('element/others'), name: 'Others', hidden: true}
+          {path: 'form', component: _import('element/form'), name: 'Form', meta: {title}},
+          {path: 'tree', component: _import('element/tree'), name: 'Tree', meta: {title}},
+          {path: 'table', component: _import('element/table'), name: 'Table', meta: {title}},
+          {path: 'collapse', component: _import('element/collapse'), name: 'Collapse', meta: {title}},
+          {path: 'tabs', component: _import('element/tabs'), name: 'Tabs', meta: {title}}
         ]
       },
       {
@@ -68,30 +49,6 @@ export default [
           meta: {title}
         }]
       }
-      // {
-      //   path: '/home/vux',
-      //   name: 'Vux',
-      //   component: _import('Content'),
-      //   // redirect: '/home/Vux/form',
-      //   meta: {icon: 'el-icon-picture'},
-      //   children: []
-      // },
-      // {
-      //   path: '/home/iView',
-      //   name: 'iView',
-      //   component: _import('Content'),
-      //   // redirect: '/home/iView/form',
-      //   meta: {icon: 'el-icon-picture'},
-      //   children: []
-      // },
-      // {
-      //   path: '/home/mint',
-      //   name: 'mint',
-      //   component: _import('Content'),
-      //   // redirect: '/home/mint/form',
-      //   meta: {icon: 'el-icon-message'},
-      //   children: []
-      // }
     ]
   }
 ]

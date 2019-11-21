@@ -61,11 +61,9 @@
     position: fixed;
     top: 62px;
     bottom: 0;
+    left: 0;
     background-color: #545c64;
-    z-index: 102;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    height: auto;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
   }

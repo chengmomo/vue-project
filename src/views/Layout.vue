@@ -1,16 +1,14 @@
 <template>
-  <div class="app-wrapper">
+  <div class="app-container">
     <!--头部导航-->
-    <top-nav></top-nav>
-    <el-container class="container">
-      <!--侧边导航-->
-      <side-menu class="side-container" v-if="refreshMenu" :isCollapse="isCollapse" @on-toggle="onToggle"></side-menu>
-      <el-row class="main-container" :style="{'margin-left': isCollapse?'65px':'200px'}">
-        <transition name="fade" mode="out-in">
-          <router-view></router-view>
-        </transition>
-      </el-row>
-    </el-container>
+    <top-nav class="top-container"></top-nav>
+    <!--侧边导航-->
+    <side-menu class="side-container" v-if="refreshMenu" :isCollapse="isCollapse" @on-toggle="onToggle"></side-menu>
+    <el-row class="main-container" :style="{'left': isCollapse?'65px':'200px'}">
+      <transition name="fade" mode="out-in">
+        <router-view></router-view>
+      </transition>
+    </el-row>
   </div>
 </template>
 <script>
@@ -63,21 +61,12 @@
   }
 </script>
 <style scoped lang="scss">
-  .container {
-    .main-container {
-      padding: 0;
-      position: fixed;
-      top: 62px;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      /*width: calc(100% - 265px);*/
-      overflow-y: scroll;
-      /*overflow-x: hidden;*/
-      .main-content {
-        border: 1px solid red;
-        box-sizing: border-box;
-      }
-    }
+  .main-container {
+    padding: 0;
+    position: fixed;
+    top: 62px;
+    right: 0;
+    bottom: 0;
+    overflow-y: scroll;
   }
 </style>

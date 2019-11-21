@@ -6,7 +6,7 @@
     </div>
     <div class="right-container">
       <el-row tyle="flex" justify="end" style="min-width:1000px">
-        <el-col :span="18" class='menu-container'>
+        <el-col :span="17" class='menu-container'>
           <el-menu class="top-menu" mode="horizontal" router unique-opened
                    background-color="transparent" active-text-color="#fff" text-color="#545c64"
                    :default-active="$route.matched[0].path">
@@ -18,7 +18,7 @@
             </el-menu-item>
           </el-menu>
         </el-col>
-        <el-col :span="6" class='user-container'>
+        <el-col :span="7" class='user-container'>
           <div class="right-menu">
             <!--<el-tooltip effect="dark" :content="$t('tab.theme')" placement="bottom">-->
             <skin-comp class="right-menu-item"></skin-comp>
