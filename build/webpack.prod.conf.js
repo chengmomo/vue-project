@@ -68,6 +68,7 @@ const webpackConfig = merge(baseWebpackConfig, {
         ? {safe: true, map: {inline: false}}
         : {safe: true}
     }),
+    // AEP项目配置
     // (function () {
     //   return Object.assign({}, {
     //     apply: function (compiler) {

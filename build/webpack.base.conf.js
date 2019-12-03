@@ -31,7 +31,7 @@ module.exports = {
   // entry: {
   //   app: './src/main.js'
   // },
-  // 安装babel-polyfill
+  // 安装babel-polyfill: 用于解析ES6+的一些新语法（Promise等）
   entry: ['babel-polyfill', './src/main.js'],
   // output: 输出配置
   output: {
