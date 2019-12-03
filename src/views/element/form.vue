@@ -79,6 +79,7 @@
 
   const typeOptions = ['美食/餐厅线上活动', '地推活动', '线下主题活动', '单纯品牌曝光']
   export default {
+    name: 'formDemo',
     components: {BackTop},
     data () {
       let checkNumber = (rule, value, callback) => {
@@ -145,6 +146,7 @@
       }
     },
     mounted () {
+      console.log('formDemo')
     },
     methods: {
       handleCheckAllChange (val) {

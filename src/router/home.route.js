@@ -26,26 +26,51 @@ export default [
         path: '/home/element',
         name: 'Element',
         component: _import('Content'),
-        redirect: '/home/element/form',
+        redirect: '/home/element/tree',
         meta: {title, icon: 'el-icon-picture', menus: menuElement},
         children: [
           {path: 'form', component: _import('element/form'), name: 'Form', meta: {title}},
           {path: 'tree', component: _import('element/tree'), name: 'Tree', meta: {title}},
           {path: 'table', component: _import('element/table'), name: 'Table', meta: {title}},
           {path: 'collapse', component: _import('element/collapse'), name: 'Collapse', meta: {title}},
-          {path: 'tabs', component: _import('element/tabs'), name: 'Tabs', meta: {title}}
+          {
+            path: 'tabs',
+            component: _import('element/tabs'),
+            name: 'Tabs',
+            redirect: '/home/element/tabs/FormDemo',
+            meta: {title},
+            children: [
+              {
+                path: 'FormDemo',
+                component: _import('element/form'),
+                name: 'FormDemo',
+                meta: {title}
+              },
+              {
+                path: 'CollapseDemo',
+                component: _import('element/form'),
+                name: 'CollapseDemo',
+                meta: {title}
+              },
+              {
+                path: 'TabPane',
+                component: _import('element/tabPane'),
+                name: 'TabPane',
+                meta: {title}
+              }]
+          }
         ]
       },
       {
         path: '/home/other',
         name: 'Other',
         component: _import('Content'),
-        redirect: '/home/other/tabs',
+        redirect: '/home/other/tab',
         meta: {icon: 'el-icon-menu'},
         children: [{
-          path: 'tabs',
+          path: 'tab',
           component: _import('element/tabs'),
-          name: 'Tabs',
+          name: 'Tab',
           meta: {title}
         }]
       }
